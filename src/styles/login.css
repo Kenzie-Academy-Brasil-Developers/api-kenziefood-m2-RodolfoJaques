@@ -1,0 +1,114 @@
+:root {
+    --Color-primary: #FF2253;
+    --Grey-2: #E9ECEF;
+    
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.box {
+
+    display: flex;
+    flex-direction: column;
+    width: 335px;
+    height: 375px;
+    /* border: 1px solid black; */
+    border-radius: 15px 15px;
+    background: rgb(7,18,27);
+    background: linear-gradient(22deg, rgba(7,18,27,0.8099614845938375) 0%, rgba(25,25,27,1) 100%);
+}
+
+.box__text {
+    display: flex;
+    justify-content: center;
+    font-size: 35px;
+    padding: 10px;
+    font-style: normal;
+    font-family: 'Poppins';
+    font-weight: 500;
+    border: 1px hidden;
+    border-radius: 15px 15px 0 0;
+    background-color: var(--Grey-2)
+    
+}
+
+.box__register > img {
+    width: 45px;
+}
+
+.box__label--label {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Poppins';
+    color: var(--Color-primary);
+    gap: 5px;
+}
+
+.box__register {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    font-family: 'Poppins';
+    font-weight: 400;
+    margin-top: 10px;
+    
+}
+
+.box__register h1 {
+    font-family: 'Poppins';
+    font-size: 26px;
+    margin-top: 5px;
+    font-weight: 500;
+    color: var(--Color-primary);
+}
+
+.box__register input {
+    width: 250px;
+    height: 35px;
+    border-radius: 12px;
+    font-family: 'Poppins';
+    font-weight: 400;
+    padding: 26px, 2px, 26px, 20px
+}
+
+.box__span {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 25px;
+    font-family: 'Poppins';
+    font-weight: 400;
+}
+
+.box__span a {
+    
+    text-decoration: none;
+    color: var(--Color-primary);
+}
+
+button{
+    width: 170px;
+    height: 35px;
+    border-radius: 12px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-weight: 500;
+    color: var(--Color-primary);
+    border: none;
+}
+
+button:active {
+    transform: translateY(4px);
+    color: var(--Color-primary);
+    font-weight: 500;
+}
+
+::placeholder {
+    padding: 5px;
+}
