@@ -2,7 +2,7 @@ import { Dom } from "./models/Dom.js";
 
 
 let dashboard = {
-    name: 'Time A',
+    name: 'Usuário Logado',
     button1:'Home',
     button2:'Logout',
 }

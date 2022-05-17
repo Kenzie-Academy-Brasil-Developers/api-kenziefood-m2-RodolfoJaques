@@ -3,13 +3,13 @@ import { User } from "./controllers/User.js";
 
 
 let noLogin = {
-    name: 'Time A',
+    name: ' ',
     button1:'Login',
     button2:'Cadastro',
 }
 
 let login = {
-    name: 'Time A',
+    name: 'Usuário logado',
     button1:'Dashboard',
     button2:'Logout',
 }
