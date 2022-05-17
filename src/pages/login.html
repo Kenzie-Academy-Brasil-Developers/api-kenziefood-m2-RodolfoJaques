@@ -12,7 +12,28 @@
     <title>Login</title>
 </head>
 <body>
-    <main></main>
+    <main class="box">
+        <div class="box__text">
+            <img src="../assets/LOGO.svg" alt="">
+        </div>
+        <div class="box__register">
+            <img src="../assets/icon_user.svg" alt="">
+            <!-- <h1>LOGIN</h1> -->
+            <section class="box__label--label">
+                <label for="login" class="box__label--label">Login</label><input type="email" placeholder="Digite seu email" name="login">
+            </section>
+
+            <section class="box__label--label">
+                <label for="senha" class="box__label--label">Senha</label><input type="password" placeholder="Digite sua senha" name="senha">
+            </section>
+            <section class="box__button--button">
+                <button>LOGIN</button>
+            </section>
+        </div>
+        <div class="box__span">
+            <a href="./cadastro.html"><span>Ainda não tem cadastro ?</span></a>
+        </div>
+</main>
     <script type="module" src="../scriptLogin.js"></script>
 </body>
 </html>
