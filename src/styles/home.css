@@ -3,7 +3,7 @@
     --Color-primary-50: #FFE9E;
     --Color-Secondary: #4ACA94;
     --Color-Secondary-50: #E4F7EF;
-    --Product-1: EEF6FF ;
+    --Product-1: #EEF6FF ;
     --Product-2: #FFF7F4;
     --Product-3: #FFE4EA;
     --Product-4: #F3EEF5;
@@ -16,7 +16,8 @@
 
 body{
     width: auto;
-    height: 100%;
+    height: 100vh;
+    overflow-x: hidden;
 }
 
 
@@ -26,6 +27,7 @@ header{
     font-family: 'Poppins', sans-serif;
     display: flex;
     flex-wrap: wrap;
+    width: auto;
 }
 header > div{
     display: flex;
@@ -89,10 +91,75 @@ header > div:nth-child(2) > button{
     background-size: 30px 30px;
 }
 
+/* começa modal */
+
+.modalUser{
+    display: none;
+}
+
+header > div:nth-child(2) > button > div:nth-child(2){
+    display: none;
+}
+header > div:nth-child(2) > button:hover > div:nth-child(2){
+    display: block;
+    background-color: #FFFFFF;
+    width: 20px;
+    height: 20px;
+    transform: rotate(45deg);
+    position: relative;
+    left: -15px;
+    top: 35px;
+}
+header > div:nth-child(2) > button:hover .modalUser{
+    display: block;
+    position: absolute;
+    right: 0px;
+    top: 45px;
+    width: 206px;
+    height: 127px;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 38px rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+}
+
+.nameUser{
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    width: 180px;
+    text-align: start;
+    padding: 12px 15px;
+    border-bottom: 2px solid var(--Grey-2);
+    
+}
+.modalUser > button{
+    border: none;
+    background: var(--Grey-1);
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    width: 60%;
+    height: 25px;
+    margin-top: 10px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: center;
+    color: var(--Grey-4);
+    border-radius: 10px;
+
+}
+.modalUser > button:hover{
+    border: 2px solid var(--Grey-3);
+    text-decoration: underline;
+    
+}
+
+
+
+
 /* _____________END HEADER______________ */
-
-
-
 
 @media(min-width:768px){
     
@@ -124,5 +191,48 @@ header > div:nth-child(2) > button{
         right: 395px;
     }
 
+    /* começa modal */
+
+    .modalUser{
+        display: inline-flex;
+        transition: all 0s ease 0s;
+        visibility: hidden;
+    }
+    header > div:nth-child(2) > button{
+        cursor: pointer;
+    }
+    header > div:nth-child(2) > button > div:nth-child(2){
+        display: inline-flex;
+        transition: all 0s ease 0s;
+        visibility: hidden;
+    }
+    header > div:nth-child(2) > button:hover > div:nth-child(2){
+        background-color: #FFFFFF;
+        left: 0px;
+        bottom: 0px;
+        transition-delay: 0s;
+        visibility: visible;
+    }
+    header > div:nth-child(2) > button:hover > .modalUser{
+        right: 120px;
+        top: 65px;
+        transition-delay: 0s;
+        visibility: visible;
+    
+    }
+    .nameUser{
+        width: 175px;
+    }
+    .modalUser > button{
+        cursor: pointer;
+    }
+    .modalUser > button:hover{
+        border: 2px solid var(--Grey-3);
+        text-decoration: underline;
+        
+    }
+    
     /* _____________END HEADER______________ */
+
+
 }
