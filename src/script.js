@@ -1,5 +1,7 @@
 import { Dom } from "./models/Dom.js";
 import { User } from "./controllers/User.js";
+import { Filters } from "./models/Filters.js";
+import { ProductsPublic } from "./controllers/ProductsPublic.js";
 
 
 let noLogin = {
@@ -38,3 +40,10 @@ modal.addEventListener('click',(e)=>{
         }
     }
 })
+
+
+
+
+
+// let teste = await ProductsPublic.getProducts()
+// console.log(teste)
