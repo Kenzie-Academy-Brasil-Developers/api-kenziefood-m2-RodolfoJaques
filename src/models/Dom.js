@@ -1,3 +1,5 @@
 class Dom{
 
 }
+
+export{Dom}
