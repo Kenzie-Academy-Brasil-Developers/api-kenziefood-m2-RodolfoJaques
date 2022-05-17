@@ -19,7 +19,7 @@ modal.addEventListener('click',(e)=>{
             window.location = '../../index.html'
         }else{
             localStorage.clear()
-            window.location.reload()
+            window.location = '../../index.html'
         }
     }
 })
