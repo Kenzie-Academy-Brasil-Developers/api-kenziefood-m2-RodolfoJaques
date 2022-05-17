@@ -1,0 +1,128 @@
+:root {
+    --Color-primary: #FF2253;
+    --Color-primary-50: #FFE9E;
+    --Color-Secondary: #4ACA94;
+    --Color-Secondary-50: #E4F7EF;
+    --Product-1: EEF6FF ;
+    --Product-2: #FFF7F4;
+    --Product-3: #FFE4EA;
+    --Product-4: #F3EEF5;
+    --Grey-4: #212529;
+    --Grey-3: #868E96;
+    --Grey-2: #E9ECEF;
+    --Grey-1: #F8F9FA;
+}
+
+
+body{
+    width: auto;
+    height: 100%;
+}
+
+
+/* _____________HEADER______________ */
+header{
+    padding: 11px 15px 0 18px;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-wrap: wrap;
+}
+header > div{
+    display: flex;
+    align-items: flex-end;
+}
+header > div > p:nth-child(1){
+    font-style: normal;
+    font-weight: 700;
+    font-size: 21.6949px;
+    line-height: 33px;
+    color: var(--Grey-4);
+    margin-right: 7px;
+    
+}
+header > div > p:nth-child(2){
+    padding-bottom: 2.5px;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16.2712px;
+    line-height: 24px;
+    color: var(--Color-primary);
+    vertical-align: bottom;
+}
+
+header > div:nth-child(2) > input{
+    border: none;
+    background-color: var(--Grey-2);
+    width: 342px;
+    height: 49px;
+    padding: 15px 18px 15px 48px;
+    border: 1.5px solid #E9ECEF;
+    border-radius: 12px;
+    box-sizing: border-box;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    color: var(--Grey-3);
+    margin-top: 36px;
+}
+header > div:nth-child(2) > span{
+    position: relative;
+    bottom:15px;
+    right: 355px;
+    width: 18px;
+    height: 18px;
+    background-image: url(../assets/search.svg);
+    background-size: 18px 18px;
+}
+header > div:nth-child(2) > button{
+    position: relative;
+    bottom:85px;
+    right: 35px;
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 50%;
+    background-image: url(../assets/icon_user.svg);
+    background-repeat: no-repeat;
+    background-size: 30px 30px;
+}
+
+/* _____________END HEADER______________ */
+
+
+
+
+@media(min-width:768px){
+    
+    /* _____________HEADER______________ */
+
+    header{
+        padding: 11px 118px 0 117px;
+        justify-content: space-between;
+        align-items: center;
+    }
+    header > div > p:nth-child(2){
+        margin: 0 0;
+        padding-top: 7px;
+        width: auto;
+    }
+    header > div:nth-child(2) > input{
+        margin-top: 0px;
+        
+    }
+    header > div:nth-child(2) > button{
+        position: unset;
+        width: 36px;
+        height: 36px;
+        background-size: 36px 36px;
+        margin: auto 0;
+        margin-left: 34px;
+    }
+    header > div:nth-child(2) > span{
+        right: 395px;
+    }
+
+    /* _____________END HEADER______________ */
+}
