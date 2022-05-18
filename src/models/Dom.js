@@ -55,7 +55,8 @@ class Dom{
         liCard.append(imgCard, nameitem, pDescription, spanSubcategory, divCartCard);
 
         return liCard;
-=======
+    }
+    
     static modalStatus = document.querySelector(".active__status")
 
     static createHeader(){
