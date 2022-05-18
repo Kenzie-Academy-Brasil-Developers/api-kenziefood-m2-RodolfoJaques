@@ -234,4 +234,91 @@ header > div:nth-child(2) > button:hover .modalUser{
     
     /* _____________END HEADER______________ */
 
+}/*____________________MODAL STATUS______________________*/
+
+*{
+    font-family: 'Poppins';
+    font-style: normal;
+    box-sizing: border-box;    
+}
+
+.modal__status{
+
+    position: absolute;
+    bottom: 1vh;
+    right: 1vw;
+
+    
+    width: 496px;
+    height: 135px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 15px;
+}
+
+.status__button{
+    background-color: #F8F9FA;
+    height: 18px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 28px;
+    gap: 256px;
+
+    border-radius: 15px 15px 0px 0px;
+}
+
+.status__button button{
+
+    border-style: none;
+    border-radius: 5px;
+}
+
+.status__button button:hover{
+    cursor: pointer;
+    opacity: 0.9;
+}
+
+.stts{
+    color: var(--Grey-4);
+
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 900;
+    font-size: 14px;
+    line-height: 20px;
+
+}
+
+.status__color--red{
+
+    background-color: var(--Color-primary);
+    height: 10px;
+    border-radius: 0px 0px 15px 15px;
+}
+
+.modal__status--error{
+    margin-left: 10px;
+}
+
+.status__color--green{
+
+    background-color: var(--Color-Secondary);
+    height: 10px;
+    border-radius: 0px 0px 15px 15px;
+}
+
+.modal__status--assert{
+    margin-left: 10px;
+}
+
+.assert-none{
+    display: flex;
+}
+
+.error-none{
+    display: flex;
 }

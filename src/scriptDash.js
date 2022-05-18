@@ -23,3 +23,40 @@ modal.addEventListener('click',(e)=>{
         }
     }
 })
+
+
+/**
+//logica do modal status
+
+{status:"error"}
+ */
+
+
+function modalSelectModal(param){
+
+    if(param.status === "error"){
+
+        Dom.modalStatusError()
+
+        const exitModal = document.querySelector(".status__button button")
+        exitModal.addEventListener("click",() => {
+
+            window.location.href = "./dashboard.html"
+        })
+    }else{
+
+        Dom.modalStatusAssert()
+
+        const exitModal = document.querySelector(".status__button button")
+        exitModal.addEventListener("click",() => {
+
+            window.location.href = "./dashboard.html"
+        })
+    }
+}
+
+/*teste OK
+
+document.body.addEventListener('click', () => {
+    modalSelectModal({status:"rror"})
+})* */
