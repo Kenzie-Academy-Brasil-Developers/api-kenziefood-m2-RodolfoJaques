@@ -58,5 +58,5 @@ function modalSelectModal(param){
 /*teste OK
 
 document.body.addEventListener('click', () => {
-    modalSelectModal({status:"rror"})
+    modalSelectModal({status:"error"})
 })* */
