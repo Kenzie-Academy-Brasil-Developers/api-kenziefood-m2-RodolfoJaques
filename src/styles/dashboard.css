@@ -218,6 +218,7 @@ header > div:nth-child(2) > button:hover .modalUser{
         bottom: 0px;
         transition-delay: 0s;
         visibility: visible;
+        z-index: 2;
         
     }
     header > div:nth-child(2) > button:hover > .modalUser{
