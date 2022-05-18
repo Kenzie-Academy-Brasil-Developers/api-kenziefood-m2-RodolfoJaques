@@ -42,7 +42,7 @@ modal.addEventListener('click',(e)=>{
 })
 
 
-
+Dom.showcase(await ProductsPublic.getProducts())
 
 
 // let teste = await ProductsPublic.getProducts()
