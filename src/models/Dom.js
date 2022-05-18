@@ -1,5 +1,7 @@
 class Dom{
 
+    static modalStatus = document.querySelector(".active__status")
+
     static createHeader(){
         let header = document.querySelector('header')
 
@@ -41,8 +43,40 @@ class Dom{
         header.append(boxBig,triangle)
     }
 
+    static modalStatusAssert(){
 
+        const containerModalAssert = document.createElement('div')
+        containerModalAssert.innerHTML = `
+        
+        <div class="modal__status assert-none">
+            <div class="status__button">
+                <p class="stts">Status</p>
+                <button>x</button>
+            </div>
+            <p class="modal__status--assert">Produto adicionado com sucesso</p>
+            <div class="status__color--green"></div>
+        </div>
+        `
+        Dom.modalStatus.appendChild(containerModalAssert)
+    }
 
+    static modalStatusError(){
+
+        const containerModalError = document.createElement('div')
+        containerModalError.classList.add('remove__modal')
+        containerModalError.innerHTML = `
+        
+        <div class="modal__status error-none">
+            <div class="status__button">
+                <p class="stts">Status</p>
+                <button>x</button>
+            </div>
+            <p class="modal__status--error">Ocorreu algum erro, o produto não foi adicionado</p>
+            <div class="status__color--red"></div>
+        </div>
+        `
+        Dom.modalStatus.appendChild(containerModalError)
+    }
 }
 
 export{Dom}
