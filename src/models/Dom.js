@@ -133,6 +133,87 @@ class Dom{
         `
         Dom.modalStatus.appendChild(containerModalError)
     }
+
+    static modalProduct (title,parent){
+
+        const modalProduct = document.createElement('section')
+        modalProduct.classList.add('externalBox')
+        modalProduct.innerHTML = `
+            <div class="modal__productsHeader">
+                <h2>${title}</h2>
+                <button>X</button>  
+            </div>
+
+            <form class="modal__productsForm" action="">
+                <label for="name">Nome do produto</label>
+                <input type="text" name="nome" id="name" placeholder="Digitar o nome">
+                <label for="description">Descrição</label>
+                <input type="text" name="descricao" id="description" placeholder="Digitar a Descrição" >
+                <label for="categories">Categorias</label>
+                <div id="categories">
+                    <button id="categories1">Panificadora</button>
+                    <button id="categories2">Frutas</button>
+                    <button id="categories3">Bebidas</button>
+                </div>
+                <label for="value__product">Valor do Produto</label>
+                <input type="number" name="valor" id="value__product" placeholder="Digitar o valor aqui">
+                <label for="link">link da imagem</label>
+                <input type="text" name="link" id="link" placeholder="Inserir link">
+            </form>
+        `
+        parent.append(modalProduct)
+        return modalProduct
+    }
+
+    static modalEditProduct (){
+        let section = document.getElementById('modal__edit')
+        section.classList.add('active__edit')
+        let modalProduct = this.modalProduct('Edição de produto',section)
+
+        let divBtn = document.createElement('div')
+        divBtn.classList.add('modal__productsButtons')
+        divBtn.innerHTML =`
+            <button>Excluir</button> 
+            <button>Salvar alterações</button>
+        `
+
+        modalProduct.append(divBtn)    
+    }
+
+    static modalRegisterProduct (){
+        let section = document.getElementById('modal__register')
+        section.classList.add('active__register')
+        let modalProduct = this.modalProduct('Cadastro de produto',section)
+
+        let divBtn = document.createElement('div')
+        divBtn.classList.add('modal__productsButtons')
+        divBtn.innerHTML =`
+            <button id = "btnRegister_product" >Cadastrar Produto</button>
+        `
+
+        modalProduct.append(divBtn)    
+    }
+
+    static modalDeleteProduct(){
+        let section = document.getElementById('modal__delete')
+        section.classList.add('active__delete')
+        section.innerHTML = `
+            <section>
+                <div>
+                    <h2>Exclusão de produto</h2>
+                    <button>X</button>
+                </div>
+                <p>Tem certeza que deseja exluir este produto?</p>
+                <div>
+                    <button>Sim</button>
+                    <button>Não</button>
+                </div>
+            </section>
+        `
+    }
+
+
+
 }
 
 export{Dom}
