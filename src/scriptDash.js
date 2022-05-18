@@ -59,6 +59,11 @@ function modalSelectModal(param){
 function clickCategory(classHTML){
     let testemodal = document.getElementById(`${classHTML}`)
 
+/*
+document.body.addEventListener('click', () => {
+    modalSelectModal({status:"error"})
+})* */
+
     testemodal.addEventListener('click',(e)=>{
         e.preventDefault()
         if(e.target.parentNode.id === 'categories'){
