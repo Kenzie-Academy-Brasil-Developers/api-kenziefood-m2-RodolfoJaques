@@ -17,7 +17,7 @@ function getInfoUser() {
         return objLogin
 
 }
- 
+
 button.addEventListener('click', async () => {
     
     const infos = getInfoUser()
