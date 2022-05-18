@@ -160,10 +160,250 @@ header > div:nth-child(2) > button:hover .modalUser{
     
 }
 
-
-
-
 /* _____________END HEADER______________ */
+
+
+/*____________________MODAL REGISTER PRODUCTS______________________*/
+
+.active__register, .active__edit, .active__delete{
+    display: block;
+    position: absolute;
+    width: 100vw;
+    height: auto;
+    background-color: rgba(0,0,0,0.8);
+    z-index: 1;
+    left: 0vw;
+    top: 0vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.externalBox{
+    background-color: #FFFFFF;
+    width: 300px;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: space-between;
+    border-radius: 8px;
+    
+}
+
+
+.modal__productsHeader{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #F8F9FA;
+    border-radius: 8px 8px 0px 0px;
+    width: 300px;
+    height: 70px;
+    padding: 20px 28px;
+}
+.modal__productsHeader > h2{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    color: #000000;
+}
+.modal__productsHeader > button{
+    width: 31px;
+    height: 30px;
+    border: none;
+    color: #868E96;
+    cursor: pointer;
+}
+.modal__productsHeader > button:hover{
+    border: 1.5px solid var(--Grey-3);
+}
+
+.modal__productsForm{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+}
+.modal__productsForm > label{
+    width: 250px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    color: var(--Grey-4);
+    margin-bottom: 10px;  
+}
+.modal__productsForm > input{
+    padding: 26px 2px 26px 20px;
+    width: 250px;
+    height: 10px;
+    background: var(--Grey-1);
+    border: 1.5px solid var(--Grey-2);
+    border-radius: 12px;
+    margin-bottom: 35px;
+}
+#description{
+    height: 80px;
+    padding: 6px 10px 10px;
+}
+
+.modal__productsForm > input:focus{
+    background: #FFFFFF;
+}
+
+#categories{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 35px;
+
+}
+
+#categories > button{
+    padding: 0px 20px;
+    width: auto;
+    height: 40px;
+    background: var(--Grey-1);
+    border: 1.5px solid var(--Grey-1);
+    border-radius: 32px;
+    text-align: center;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 9px;
+    line-height: 17px;
+    color: var(--Grey-3);
+    cursor: pointer;
+}
+
+#categories > button:hover{
+    border: 1.5px solid var(--Grey-3);
+}
+
+#categories > .clicked{
+    background: var(--Color-primary);
+    color: var(--Grey-1);
+}
+
+.modal__productsButtons{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 47px;
+}
+
+.modal__productsButtons > button:nth-child(2){
+    width: 240px;
+    height: 52px;
+    background: var(--Color-primary);
+    border: 1.5px solid var(--Color-primary);
+    border-radius: 32px;
+    color: var(--Grey-1);
+    cursor: pointer;
+}
+
+
+.modal__productsButtons > button:nth-child(1){
+    width: 100px;
+    height: 52px;
+    background: var(--Grey-1);
+    border: 1.5px solid var(--Grey-1);
+    border-radius: 32px;
+    color: var(--Grey-3);
+    margin-right: 8px;
+    cursor: pointer;
+}
+
+#btnRegister_product{
+    width: 200px;
+    height: 52px;
+    background: var(--Color-primary);
+    border: 1.5px solid var(--Color-primary);
+    border-radius: 32px;
+    color: var(--Grey-1);
+    cursor: pointer;
+}
+
+/* _______ modal de exclusão ________ */
+.active__delete {
+    height: 100vh;
+}
+.active__delete > section{
+    width: 260px;
+    height: 50vh;
+    background-color: #FFFFFF;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-between;
+    border-radius: 8px
+}
+
+.active__delete > section > div:nth-child(1){
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #F8F9FA;
+    border-radius: 8px 8px 0px 0px;
+    width: 496px;
+    height: 70px;
+    padding: 20px 28px;
+}
+.active__delete > section > div:nth-child(1) > h2{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    color: #000000;
+}
+.active__delete > section > div:nth-child(1) > button{
+    width: 31px;
+    height: 30px;
+    border: none;
+    color: #868E96;
+    cursor: pointer;
+}
+.active__delete > section > div:nth-child(1) > button:hover{
+    border: 1.5px solid var(--Grey-3);
+}
+.active__delete > section > p{
+    width: 100%;
+    text-align: center;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 27px;
+    color: #000000;
+}
+
+.active__delete > section > div:nth-child(3) {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 35px;
+}
+.active__delete > section > div:nth-child(3) > button{
+    width: 210px;
+    height: 52px;
+    background: var(--Grey-1);
+    border: 1.5px solid var(--Grey-1);
+    border-radius: 32px;
+    margin: 0 10px;
+    cursor: pointer;
+}
+
+.active__delete > section > div:nth-child(3) > button:hover{
+    border: 1.5px solid var(--Grey-3);
+}
+
+
 
 @media(min-width:768px){
     
@@ -423,244 +663,248 @@ header > div:nth-child(2) > button:hover .modalUser{
         cursor: pointer;
     }
 
-}
+    /*____________________MODAL REGISTER PRODUCTS______________________*/
 
-/*____________________MODAL REGISTER PRODUCTS______________________*/
-
-.active__register, .active__edit, .active__delete{
-    display: block;
-    position: absolute;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0,0,0,0.8);
-    z-index: 1;
-    left: 0vw;
-    top: 0vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+    .active__register, .active__edit, .active__delete{
+        display: block;
+        position: absolute;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0,0,0,0.8);
+        z-index: 1;
+        left: 0vw;
+        top: 0vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 
 
-.externalBox{
-    background-color: #FFFFFF;
-    width: 496px;
-    height: 755px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-content: space-between;
-    border-radius: 8px;
+    .externalBox{
+        background-color: #FFFFFF;
+        width: 496px;
+        height: 755px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-content: space-between;
+        border-radius: 8px;
+        
+    }
+
+
+    .modal__productsHeader{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #F8F9FA;
+        border-radius: 8px 8px 0px 0px;
+        width: 496px;
+        height: 70px;
+        padding: 20px 28px;
+    }
+    .modal__productsHeader > h2{
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 20px;
+        color: #000000;
+    }
+    .modal__productsHeader > button{
+        width: 31px;
+        height: 30px;
+        border: none;
+        color: #868E96;
+        cursor: pointer;
+    }
+    .modal__productsHeader > button:hover{
+        border: 1.5px solid var(--Grey-3);
+    }
+
+    .modal__productsForm{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+
+    }
+    .modal__productsForm > label{
+        width: 440px;
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        color: var(--Grey-4);
+        margin-bottom: 10px;  
+    }
+    .modal__productsForm > input{
+        padding: 26px 2px 26px 20px;
+        width: 440px;
+        height: 52px;
+        background: var(--Grey-1);
+        border: 1.5px solid var(--Grey-2);
+        border-radius: 12px;
+        margin-bottom: 35px;
+    }
+    #description{
+        height: 80px;
+        padding: 6px 20px 20px;
+    }
+
+    .modal__productsForm > input:focus{
+        background: #FFFFFF;
+    }
+
+    #categories{
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        margin-bottom: 35px;
+
+    }
+
+    #categories > button{
+        padding: 0px 20px;
+        width: 136px;
+        height: 40px;
+        background: var(--Grey-1);
+        border: 1.5px solid var(--Grey-1);
+        border-radius: 32px;
+        text-align: center;
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 17px;
+        color: var(--Grey-3);
+        cursor: pointer;
+    }
+
+    #categories > button:hover{
+        border: 1.5px solid var(--Grey-3);
+    }
+
+    #categories > .clicked{
+        background: var(--Color-primary);
+        color: var(--Grey-1);
+    }
+
+    .modal__productsButtons{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 47px;
+    }
+
+    .modal__productsButtons > button:nth-child(2){
+        width: 240px;
+        height: 52px;
+        background: var(--Color-primary);
+        border: 1.5px solid var(--Color-primary);
+        border-radius: 32px;
+        color: var(--Grey-1);
+        cursor: pointer;
+    }
+
+
+    .modal__productsButtons > button:nth-child(1){
+        width: 192px;
+        height: 52px;
+        background: var(--Grey-1);
+        border: 1.5px solid var(--Grey-1);
+        border-radius: 32px;
+        color: var(--Grey-3);
+        margin-right: 8px;
+        cursor: pointer;
+    }
+
+    #btnRegister_product{
+        width: 440px;
+        height: 52px;
+        background: var(--Color-primary);
+        border: 1.5px solid var(--Color-primary);
+        border-radius: 32px;
+        color: var(--Grey-1);
+        cursor: pointer;
+    }
+
+    /* _______ modal de exclusão ________ */
+
+    .active__delete > section{
+        width: 496px;
+        height: 283px;
+        background-color: #FFFFFF;
+        display: flex;
+        flex-wrap: wrap;
+        align-content: space-between;
+        border-radius: 8px
+    }
+
+    .active__delete > section > div:nth-child(1){
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #F8F9FA;
+        border-radius: 8px 8px 0px 0px;
+        width: 496px;
+        height: 70px;
+        padding: 20px 28px;
+    }
+    .active__delete > section > div:nth-child(1) > h2{
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 20px;
+        color: #000000;
+    }
+    .active__delete > section > div:nth-child(1) > button{
+        width: 31px;
+        height: 30px;
+        border: none;
+        color: #868E96;
+        cursor: pointer;
+    }
+    .active__delete > section > div:nth-child(1) > button:hover{
+        border: 1.5px solid var(--Grey-3);
+    }
+    .active__delete > section > p{
+        width: 100%;
+        text-align: center;
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 27px;
+        color: #000000;
+    }
+
+    .active__delete > section > div:nth-child(3) {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 35px;
+    }
+    .active__delete > section > div:nth-child(3) > button{
+        width: 210px;
+        height: 52px;
+        background: var(--Grey-1);
+        border: 1.5px solid var(--Grey-1);
+        border-radius: 32px;
+        margin: 0 10px;
+        cursor: pointer;
+    }
+
+    .active__delete > section > div:nth-child(3) > button:hover{
+        border: 1.5px solid var(--Grey-3);
+    }
+
+
+
     
 }
 
-
-.modal__productsHeader{
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: #F8F9FA;
-    border-radius: 8px 8px 0px 0px;
-    width: 496px;
-    height: 70px;
-    padding: 20px 28px;
-}
-.modal__productsHeader > h2{
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 20px;
-    color: #000000;
-}
-.modal__productsHeader > button{
-    width: 31px;
-    height: 30px;
-    border: none;
-    color: #868E96;
-    cursor: pointer;
-}
-.modal__productsHeader > button:hover{
-    border: 1.5px solid var(--Grey-3);
-}
-
-.modal__productsForm{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-
-}
-.modal__productsForm > label{
-    width: 440px;
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    color: var(--Grey-4);
-    margin-bottom: 10px;  
-}
-.modal__productsForm > input{
-    padding: 26px 2px 26px 20px;
-    width: 440px;
-    height: 52px;
-    background: var(--Grey-1);
-    border: 1.5px solid var(--Grey-2);
-    border-radius: 12px;
-    margin-bottom: 35px;
-}
-#description{
-    height: 80px;
-    padding: 6px 20px 20px;
-}
-
-.modal__productsForm > input:focus{
-    background: #FFFFFF;
-}
-
-#categories{
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-    margin-bottom: 35px;
-
-}
-
-#categories > button{
-    padding: 0px 20px;
-    width: 136px;
-    height: 40px;
-    background: var(--Grey-1);
-    border: 1.5px solid var(--Grey-1);
-    border-radius: 32px;
-    text-align: center;
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 17px;
-    color: var(--Grey-3);
-    cursor: pointer;
-}
-
-#categories > button:hover{
-    border: 1.5px solid var(--Grey-3);
-}
-
-#categories > .clicked{
-    background: var(--Color-primary);
-    color: var(--Grey-1);
-}
-
-.modal__productsButtons{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    margin-bottom: 47px;
-}
-
-.modal__productsButtons > button:nth-child(2){
-    width: 240px;
-    height: 52px;
-    background: var(--Color-primary);
-    border: 1.5px solid var(--Color-primary);
-    border-radius: 32px;
-    color: var(--Grey-1);
-    cursor: pointer;
-}
-
-
-.modal__productsButtons > button:nth-child(1){
-    width: 192px;
-    height: 52px;
-    background: var(--Grey-1);
-    border: 1.5px solid var(--Grey-1);
-    border-radius: 32px;
-    color: var(--Grey-3);
-    margin-right: 8px;
-    cursor: pointer;
-}
-
-#btnRegister_product{
-    width: 440px;
-    height: 52px;
-    background: var(--Color-primary);
-    border: 1.5px solid var(--Color-primary);
-    border-radius: 32px;
-    color: var(--Grey-1);
-    cursor: pointer;
-}
-
-/* _______ modal de exclusão ________ */
-
-.active__delete > section{
-    width: 496px;
-    height: 283px;
-    background-color: #FFFFFF;
-    display: flex;
-    flex-wrap: wrap;
-    align-content: space-between;
-    border-radius: 8px
-}
-
-.active__delete > section > div:nth-child(1){
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: #F8F9FA;
-    border-radius: 8px 8px 0px 0px;
-    width: 496px;
-    height: 70px;
-    padding: 20px 28px;
-}
-.active__delete > section > div:nth-child(1) > h2{
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 20px;
-    color: #000000;
-}
-.active__delete > section > div:nth-child(1) > button{
-    width: 31px;
-    height: 30px;
-    border: none;
-    color: #868E96;
-    cursor: pointer;
-}
-.active__delete > section > div:nth-child(1) > button:hover{
-    border: 1.5px solid var(--Grey-3);
-}
-.active__delete > section > p{
-    width: 100%;
-    text-align: center;
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 27px;
-    color: #000000;
-}
-
-.active__delete > section > div:nth-child(3) {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    margin-bottom: 35px;
-}
-.active__delete > section > div:nth-child(3) > button{
-    width: 210px;
-    height: 52px;
-    background: var(--Grey-1);
-    border: 1.5px solid var(--Grey-1);
-    border-radius: 32px;
-    margin: 0 10px;
-    cursor: pointer;
-}
-
-.active__delete > section > div:nth-child(3) > button:hover{
-    border: 1.5px solid var(--Grey-3);
-}
 
 
