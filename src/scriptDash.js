@@ -33,7 +33,7 @@ modal.addEventListener('click',(e)=>{
 {status:"error"}
 
 document.body.addEventListener('click', () => {
-    modalSelectModal({status:"error"})
+    modalSelectModal({status:"rror"})
 })* */
 
 function modalSelectModal(param){
