@@ -1,5 +1,6 @@
 :root {
     --Color-primary: #FF2253;
+
     --Color-primary-50: #FFE9EE;
     --Color-Secondary: #4ACA94;
     --Color-Secondary-50: #E4F7EF;
@@ -389,5 +390,229 @@
 }
 
 @media screen and (min-width: 768px){
+
+}
+
+
+body{
+    width: auto;
+    height: 100vh;
+    overflow-x: hidden;
+}
+
+
+/* _____________HEADER______________ */
+header{
+    padding: 11px 15px 0 18px;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-wrap: wrap;
+    width: auto;
+}
+header > div{
+    display: flex;
+    align-items: flex-end;
+}
+header > div > p:nth-child(1){
+    font-style: normal;
+    font-weight: 700;
+    font-size: 21.6949px;
+    line-height: 33px;
+    color: var(--Grey-4);
+    margin-right: 7px;
     
+}
+header > div > p:nth-child(2){
+    padding-bottom: 2.5px;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16.2712px;
+    line-height: 24px;
+    color: var(--Color-primary);
+    vertical-align: bottom;
+}
+
+header > div:nth-child(2) > input{
+    border: none;
+    background-color: var(--Grey-2);
+    width: 342px;
+    height: 49px;
+    padding: 15px 18px 15px 48px;
+    border: 1.5px solid #E9ECEF;
+    border-radius: 12px;
+    box-sizing: border-box;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    color: var(--Grey-3);
+    margin-top: 36px;
+}
+header > div:nth-child(2) > span{
+    position: relative;
+    bottom:15px;
+    right: 355px;
+    width: 18px;
+    height: 18px;
+    background-image: url(../assets/search.svg);
+    background-size: 18px 18px;
+}
+header > div:nth-child(2) > button{
+    position: relative;
+    bottom:85px;
+    right: 35px;
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 50%;
+    background-image: url(../assets/icon_user.svg);
+    background-repeat: no-repeat;
+    background-size: 30px 30px;
+}
+
+/* começa modal */
+
+.modalUser{
+    display: none;
+}
+
+header > div:nth-child(2) > button > div:nth-child(2){
+    display: none;
+}
+header > div:nth-child(2) > button:hover > div:nth-child(2){
+    display: block;
+    background-color: #FFFFFF;
+    width: 20px;
+    height: 20px;
+    transform: rotate(45deg);
+    position: relative;
+    left: -15px;
+    top: 35px;
+}
+header > div:nth-child(2) > button:hover .modalUser{
+    display: block;
+    position: absolute;
+    right: 0px;
+    top: 45px;
+    width: 206px;
+    height: 127px;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 38px rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+}
+
+.nameUser{
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    width: 180px;
+    text-align: start;
+    padding: 12px 15px;
+    border-bottom: 2px solid var(--Grey-2);
+    
+}
+.modalUser > button{
+    border: none;
+    background: var(--Grey-1);
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    width: 60%;
+    height: 25px;
+    margin-top: 10px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: center;
+    color: var(--Grey-4);
+    border-radius: 10px;
+
+}
+.modalUser > button:hover{
+    border: 2px solid var(--Grey-3);
+    text-decoration: underline;
+    
+}
+
+
+
+
+/* _____________END HEADER______________ */
+
+@media(min-width:768px){
+    
+    /* _____________HEADER______________ */
+
+    header{
+        padding: 11px 118px 0 117px;
+        justify-content: space-between;
+        align-items: center;
+    }
+    header > div > p:nth-child(2){
+        margin: 0 0;
+        padding-top: 7px;
+        width: auto;
+    }
+    header > div:nth-child(2) > input{
+        margin-top: 0px;
+        
+    }
+    header > div:nth-child(2) > button{
+        position: unset;
+        width: 36px;
+        height: 36px;
+        background-size: 36px 36px;
+        margin: auto 0;
+        margin-left: 34px;
+    }
+    header > div:nth-child(2) > span{
+        right: 395px;
+    }
+
+    /* começa modal */
+
+    .modalUser{
+        display: inline-flex;
+        transition: all 0s ease 0s;
+        visibility: hidden;
+    }
+    header > div:nth-child(2) > button{
+        cursor: pointer;
+    }
+    header > div:nth-child(2) > button > div:nth-child(2){
+        display: inline-flex;
+        transition: all 0s ease 0s;
+        visibility: hidden;
+    }
+    header > div:nth-child(2) > button:hover > div:nth-child(2){
+        background-color: #FFFFFF;
+        left: 0px;
+        bottom: 0px;
+        transition-delay: 0s;
+        visibility: visible;
+    }
+    header > div:nth-child(2) > button:hover > .modalUser{
+        right: 120px;
+        top: 65px;
+        transition-delay: 0s;
+        visibility: visible;
+    
+    }
+    .nameUser{
+        width: 175px;
+    }
+    .modalUser > button{
+        cursor: pointer;
+    }
+    .modalUser > button:hover{
+        border: 2px solid var(--Grey-3);
+        text-decoration: underline;
+        
+    }
+    
+    /* _____________END HEADER______________ */
+
+
 }
