@@ -159,11 +159,174 @@ header > div:nth-child(2) > button:hover .modalUser{
     text-decoration: underline;
     
 }
-
-
-
-
 /* _____________END HEADER______________ */
+
+/*___________page style___________*/
+
+.nav_itensAndBotao{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+    width: 100vw;
+    margin-top: 10px;
+}
+
+.nav_itensAndBotao nav{
+    display: flex;
+    margin: 13px 0px 13px 0px;
+
+    padding-left: 5px;
+    font-family: 'Poppins', sans-serif;
+    overflow-y: auto;
+}
+
+.button__nav{
+
+    border-style: none;
+    border-radius: 50px;
+    margin-right: 7px;
+    height: 48px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    line-height: 19px;
+    text-align: center;
+    padding: 15px; 
+    display: flex; 
+    gap: 5px; 
+
+}
+
+.button__nav:hover{
+
+    cursor: pointer;
+}
+
+.button__nav--todos{
+    color: var(--Grey-1);
+    background-color: var(--Color-primary);
+}
+
+.button__nav--panificadora{
+    color: var(--Grey-4);
+    background-color: var(--Product-2);
+}
+
+.button__nav--frutas{
+    color: var(--Grey-4);
+    background-color: var(--Product-3);;
+}
+
+.button__nav--bebidas{
+    color: var(--Grey-4);
+    background-color: var(--Product-4);
+}
+
+.add__prod{
+    color: var(--Grey-1);
+    background-color: var(--Color-primary);
+    border-style: none;
+    border-radius: 50px;
+    margin-right: 16px;
+    height: 48px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    padding: 15px;
+    margin: 0px auto;
+}
+
+.add__prod:hover{
+
+    cursor: pointer;
+    
+}
+
+/*_______list style_______*/
+
+.prod__action{
+    color: var(--Grey-3);
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-size: smaller;
+
+    display: flex;
+    justify-content: space-between;
+
+    margin-left: 70px;
+    margin-top: 30px;
+
+    padding-right: 28px;
+    padding-left: 78px;
+}
+
+.list{
+
+    margin-top: 15px;
+    padding: 5px;
+}
+
+.item__list--dash{
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-size: small;
+    font-weight: 500;
+
+    margin-bottom: 15px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 15px;
+}
+
+.item__list--dash:hover{
+
+    background-color: var(--Grey-2);
+    border-radius: 15px;
+}
+
+.pic__name{
+
+    color: var(--Grey-4);
+    display: flex;
+    align-items: center;
+}
+
+.img_dash--produto{
+
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+    margin-right: 20px;
+}
+
+.infos{
+    display: none;
+}
+
+.imgs{
+
+    width: 50px;
+    display: flex;
+    justify-content: space-around;
+
+    margin-right: 15px;
+}
+
+.img_dash--edit{
+    width: 11px;
+    height: 11px;
+}
+
+.img_dash--delete{
+    width: 10px;
+    height: 10px;
+}
+
 
 @media(min-width:768px){
     
@@ -347,6 +510,7 @@ header > div:nth-child(2) > button:hover .modalUser{
         height: 92px;
 
         display: flex;
+        flex-direction: row;
         justify-content: space-between;
         padding: 0px 50px;
         align-items:flex-end;
@@ -359,6 +523,7 @@ header > div:nth-child(2) > button:hover .modalUser{
         display: flex;
         justify-content: space-around;
         margin-left: 60px;
+        overflow-y: unset;
     }
 
     .button__nav{
@@ -410,6 +575,7 @@ header > div:nth-child(2) > button:hover .modalUser{
         border-style: none;
         border-radius: 50px;
         margin-right: 16px;
+        margin-bottom: 13px;
         height: 48px;
         font-weight: 500;
         font-size: 16px;
@@ -422,6 +588,56 @@ header > div:nth-child(2) > button:hover .modalUser{
         cursor: pointer;
     }
 
+    /*__________list style___________*/
+
+    .prod__action{
+
+        margin: 40px 10% 0px 10%;
+    }
+
+    .list{
+
+        padding: 50px;
+    }
+
+
+    .cont__categoria{
+        display: block;
+        width: 100px;
+        font-size: small;
+    }
+
+    .categoria{
+
+        background-color: var(--Product-4);
+        padding: 5px;
+        border-radius: 25px;
+    }
+
+    .description{
+        display: block;
+        width: 300px;
+        text-align: justify;
+    }
+
+    .infos{
+
+        color: var(--Grey-3);
+        font-size: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        width: 66%;
+    }
+
+    .pic__name{
+        width: 300px;
+    }
+
+    .imgs{
+
+        width: 90px;
+    }
 }
 
 /*____________________MODAL REGISTER PRODUCTS______________________*/

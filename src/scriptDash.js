@@ -1,5 +1,6 @@
 import { ProductsPrivate } from "./controllers/ProductsPrivate.js";
 import { Dom } from "./models/Dom.js";
+import { ProductsPublic } from "./controllers/ProductsPublic.js"
 
 
 let dashboard = {
@@ -30,8 +31,10 @@ modal.addEventListener('click',(e)=>{
 //logica do modal status
 
 {status:"error"}
- */
 
+document.body.addEventListener('click', () => {
+    modalSelectModal({status:"error"})
+})* */
 
 function modalSelectModal(param){
 
@@ -59,10 +62,7 @@ function modalSelectModal(param){
 function clickCategory(classHTML){
     let testemodal = document.getElementById(`${classHTML}`)
 
-/*
-document.body.addEventListener('click', () => {
-    modalSelectModal({status:"error"})
-})* */
+
 
     testemodal.addEventListener('click',(e)=>{
         e.preventDefault()
@@ -132,7 +132,14 @@ edit.addEventListener('click', async (e)=>{
     }
 })
 
+async function creatCardsDash() {
+    
+    const data = await ProductsPublic.getProducts()
 
+    Dom.listProductsDash(data)
+
+}
+creatCardsDash()
 
 
 
