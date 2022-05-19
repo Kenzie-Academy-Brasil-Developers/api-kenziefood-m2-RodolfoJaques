@@ -1,6 +1,16 @@
+import { ProductsPublic } from "../controllers/ProductsPublic.js";
+
 class Dom{
     static arrayCart = [];
     static deletArrayCart = [];
+    static count = 0
+    static objectAll = []
+    static arrayLocal = this.fixObject()
+
+
+
+
+
 
     static async showcase(arrayObj) {
         const ulShowcase = document.querySelector('.showcase__home');
@@ -218,22 +228,32 @@ class Dom{
 
 
     static addItemCart() {
+        console
         const ulShowcase = document.querySelector('#showcase');
         ulShowcase.addEventListener('click', (event) => {
             if (event.target.id === 'btn__buy' || event.target.classList[0] === 'buyBnt__img') {
                 let card = {
-                    image: event.target.closest('li').children[0].src,
+                    imagem: event.target.closest('li').children[0].src,
                     categoria: event.target.closest('li').children[3].innerHTML,
                     id: event.target.closest('li').id,
                     nome: event.target.closest('li').children[1].innerHTML,
                     preco: event.target.closest('li').children[4].children[0].innerHTML,
+                    num: this.count
                 }
-
-                Dom.arrayCart.push(card);
                 
+                Dom.arrayCart.push(card);
                 Dom.valueCart(Dom.arrayCart);
                 Dom.createCart(Dom.arrayCart);
                 Dom.lengthCart(Dom.arrayCart);
+                
+                this.count++
+
+                if(localStorage.getItem('token') === null){
+                    
+                    this.objectAll = this.addCartObject(Dom.arrayCart)
+                    localStorage.clear()
+                    localStorage.setItem(`${Object.keys(this.objectAll)}`,Object.values(this.objectAll))
+                }
             }
         })
 
@@ -246,9 +266,16 @@ class Dom{
         let array = [];
 
         arrayCart.forEach((item) => {
-           let sliceItem = item.preco.slice((3));
-           let numberItem = Number(sliceItem);
-           array.push(numberItem);
+            if(typeof item.preco === 'string'){
+                let sliceItem = item.preco.slice((3));
+                let numberItem = Number(sliceItem);
+                array.push(numberItem);
+            }else{
+                array.push(item.preco);
+            }
+        //    let sliceItem = item.preco.slice((3));
+        //    let numberItem = Number(sliceItem);
+           
        })
 
        let totalValue = array.reduce((acc, current) => acc + current, 0);
@@ -258,32 +285,32 @@ class Dom{
     static createCart(arrayCart) {
         const ulCartContent = document.querySelector('.cart__card');
         ulCartContent.innerHTML = '';
-
-        arrayCart.forEach( ({image, id, nome, preco, categoria}) => {
+        
+        arrayCart.forEach( ({imagem, id, nome, preco, categoria , num}) => {
+            
             const li = document.createElement('li');
             li.classList.add('cart__products');
             li.id = id;
 
             li.innerHTML =`
-            <img class='products__img' src="${image}" alt="${nome}">
-            <h3 class='products__title'>${nome}</h3>
-            <span class='products__category'>${categoria}</span>
-            <p class='products__price'>${preco}</p>
-            <button id="${id}" class='span__products__icon'>
-                <img class='products__icon' src="./src/assets/trash_aside.svg">
+            <img class="products__img" src="${imagem}" alt="${nome}">
+            <h3 class="products__title">${nome}</h3>
+            <span class="products__category">${categoria}</span>
+            <p class="products__price">${preco}</p>
+            <button id="${id}" class="span__products__icon">
+                <img class="products__icon" id = "${num}" src="./src/assets/trash_aside.svg">
             </button>
             `
             ulCartContent.append(li);
-
         })  
-        
-        console.log(Dom.arrayCart)
+
     }
 
     static lengthCart(arrayCart) {
         const valueTotal = document.querySelector('#length__value')
         let cartLength = arrayCart.map(item => item).length;
         valueTotal.innerHTML = cartLength;
+        return cartLength
     }
 
     static cartMobile() {
@@ -342,17 +369,100 @@ class Dom{
         })
     }
 
-    static deletCart(arrayCart) {
+
+    static addCartObject(array){
+            let obj = {}
+        
+            array.forEach(element => {
+                
+                obj[`${element.id}`] = 0
+        
+            });
+        
+            array.forEach(element => {
+                
+                obj[`${element.id}`] = obj[`${element.id}`] + 1
+        
+            });
+        
+            return obj  
+    }
+
+
+    static async fixObject(){
+        let newArrayApi = []
+        let obj = {}
+        let objApi = {}
+        // let token = localStorage.getItem('token')
+        // if(token !== null){
+        //     Object.entries(localStorage)
+        // }
+        let key = Object.entries(localStorage)[0][0].split(',')
+        let value = Object.entries(localStorage)[0][1].split(',')
+        
+        key.forEach((element,i) => {
+            obj[`${element}`] = value[i]
+            objApi.product_id = element
+            objApi.quantity = value[i]
+            newArrayApi.push(objApi)
+        });
+        let array = await ProductsPublic.getProducts()
+        let newArray = []
+        
+
+        Object.keys(obj).forEach((element,index) => {
+    
+            let objeto = {}
+            for(let i = 0 ; i < Number(Object.values(obj)[index]); i++){
+                objeto = array.filter(elem => element === elem.id)[0]
+                objeto.num = 0
+                newArray.push(objeto)
+            
+            }
+
+        });
+        if(localStorage.getItem('token')!== null){
+            return newArrayApi
+        }
+        return newArray
+    }
+
+
+    static deletCart() {
         const trashBtn = document.querySelector('.cart__card');        
        
-        // console.log()
+        
         trashBtn.addEventListener('click', (event) => {
             event.preventDefault();
 
-            Dom.deletArrayCart = arrayCart.filter((element) => element.id !== event.target.parentNode.id)
-            console.log(Dom.deletArrayCart)
-            Dom.arrayCart = Dom.deletArrayCart
-            Dom.createCart()
+
+            if(event.target.nodeName === 'IMG'){
+                // console.log(event.target.parentNode.parentNode)
+                // event.target.parentNode.parentNode.remove()
+                // let arrayDelete =  Dom.arrayCart.c event.target.parentNode.id
+                
+                Dom.deletArrayCart = Dom.arrayCart.filter((e) => e.num !== Number(event.target.id))
+                Dom.arrayCart = Dom.deletArrayCart
+                Dom.valueCart(Dom.arrayCart);
+                Dom.createCart(Dom.arrayCart);
+                Dom.lengthCart(Dom.arrayCart);
+                
+                if(localStorage.getItem('token') === null){
+                    
+                    if(Dom.arrayCart.length === 0){
+                        localStorage.clear()
+                    }else{
+                        this.objectAll = this.addCartObject(Dom.arrayCart)
+                        localStorage.clear()
+                        localStorage.setItem(`${Object.keys(this.objectAll)}`,Object.values(this.objectAll))   
+                    }
+                    
+
+                }     
+                
+            }      
+
+
         })
         
     }
