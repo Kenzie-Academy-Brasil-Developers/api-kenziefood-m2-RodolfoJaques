@@ -14,7 +14,7 @@ class Dom{
 
     static async showcase(arrayObj) {
         const ulShowcase = document.querySelector('.showcase__home');
-
+        ulShowcase.innerHTML = ''
         let items = await arrayObj;
         items.forEach(item => {
             let pollutedItem = this.pollutedItem(item);
@@ -398,15 +398,20 @@ class Dom{
         // if(token !== null){
         //     Object.entries(localStorage)
         // }
-        let key = Object.entries(localStorage)[0][0].split(',')
-        let value = Object.entries(localStorage)[0][1].split(',')
+        let key 
+        let value 
+        if(Object.entries(localStorage).length !== 0 && localStorage.getItem('token')=== null){
+            key = Object.entries(localStorage)[0][0].split(',')
+            value = Object.entries(localStorage)[0][1].split(',')        
+            key.forEach((element,i) => {
+                obj[`${element}`] = value[i]
+                objApi.product_id = element
+                objApi.quantity = value[i]
+                newArrayApi.push(objApi)
+            });
+        }
         
-        key.forEach((element,i) => {
-            obj[`${element}`] = value[i]
-            objApi.product_id = element
-            objApi.quantity = value[i]
-            newArrayApi.push(objApi)
-        });
+
         let array = await ProductsPublic.getProducts()
         let newArray = []
         

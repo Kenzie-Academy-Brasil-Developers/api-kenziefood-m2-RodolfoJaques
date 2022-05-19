@@ -3,6 +3,7 @@ import { User } from "./controllers/User.js";
 import { Filters } from "./models/Filters.js";
 import { ProductsPublic } from "./controllers/ProductsPublic.js";
 import { Cart } from "./controllers/Cart.js";
+import { ProductsPrivate } from "./controllers/ProductsPrivate.js";
 
 
 let noLogin = {
@@ -68,7 +69,33 @@ if(await Dom.arrayLocal.length !== 0){
 
 
 
-console.log(await Dom.fixObject())
+// console.log(await Dom.fixObject())
+
+
+
+let arrayTotal = await ProductsPrivate.getMyProducts()
+
+if(localStorage.getItem('token') === null){
+    arrayTotal = await ProductsPublic.getProducts()
+}
+
+let filterTag = document.querySelector('.nav__ul')
+filterTag.addEventListener('click', async (e)=>{
+  
+    if(e.target.nodeName === 'LI' || e.target.nodeName !== 'IMG'){
+        Dom.showcase(await Filters.categoryFilter(arrayTotal, e.target.innerText))
+    }
+})
+
+let filterText = document.querySelector('header')
+filterText.addEventListener('keydown', async (e)=>{
+    if(e.target.nodeName === 'INPUT'){
+        Dom.showcase(Filters.filterBySearch(arrayTotal, e.target.value))
+    }
+})
+
+
+
 
 
 
