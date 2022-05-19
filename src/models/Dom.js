@@ -216,14 +216,16 @@ class Dom{
     static listProductsDash(array){
 
         const list = document.querySelector('.list');
-        list.innerHTML = ''
+
+        list.innerHTML = ""
+
         array.forEach((item) => {
 
             let { categoria, descricao, id, imagem, nome, preco } = item
 
             list.innerHTML += `
             
-            <li class= "item__list--dash">
+            <li class= "item__list--dash" id= "${id}">
                 <div class= "pic__name" >
                     <img class= "img img_dash--produto" src = "${imagem}">
                     <span class= "nome__produto">${nome}</span>         

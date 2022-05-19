@@ -162,6 +162,91 @@ header > div:nth-child(2) > button:hover .modalUser{
 /* _____________END HEADER______________ */
 
 
+/*_________________modal status____________________*/
+
+.modal__status{
+    background-color: white;
+
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    position: absolute;
+    bottom: 1vh;
+    right: 1vw;
+    width: 365px;
+    
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 15px;
+}
+
+.status__button{
+    background-color: var(--Grey-2);
+    border: 0.5px solid var(--Grey-2);
+    height: 2px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 28px;
+    gap: 256px;
+
+    border-radius: 15px 15px 0px 0px;
+}
+
+.status__button button{
+
+    border-style: none;
+    border-radius: 5px;
+    background-color: var(--Grey-2);
+}
+
+.status__button button:hover{
+    cursor: pointer;
+    opacity: 0.9;
+}
+
+.stts{
+    color: var(--Grey-4);
+
+    
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 900;
+
+
+}
+
+.status__color--red{
+
+    background-color: var(--Color-primary);
+    height: 10px;
+    border-radius: 0px 0px 15px 15px;
+}
+
+.modal__status--error{
+    font-size: smaller;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.status__color--green{
+
+    background-color: var(--Color-Secondary);
+    height: 10px;
+    border-radius: 0px 0px 15px 15px;
+}
+
+.modal__status--assert{
+
+    font-size: smaller;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+}
+
 /*___________page style___________*/
 
 
