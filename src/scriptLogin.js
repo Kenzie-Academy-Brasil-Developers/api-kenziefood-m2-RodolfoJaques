@@ -13,7 +13,7 @@ function getInfoUser() {
             email: email,
             password: password
         }
-        console.log(objLogin)
+        
         return objLogin
 
 }
