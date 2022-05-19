@@ -872,6 +872,8 @@ header > div:nth-child(2) > button:hover .modalUser{
         left: 0px;
         top: 80px;
         right: 16px;
+
+        height: 524px;
     }
 
     .value__cart {
@@ -879,7 +881,7 @@ header > div:nth-child(2) > button:hover .modalUser{
     } 
 
     .cart__content {
-        height: 24vw;
+        height: 33vw;
     } 
 
     .cart__card {
@@ -899,8 +901,8 @@ header > div:nth-child(2) > button:hover .modalUser{
     }
     .products__category {
         bottom: -35px;
-        left: -235px;
-        text-align: center;
+        left: 90px;
+
     }
 
     .span__products__icon {
@@ -908,8 +910,8 @@ header > div:nth-child(2) > button:hover .modalUser{
     }
 
     .products__img {
-        width: 100px;
-        height: 100px;
+        width: 50px;
+        height: 50px;
     }
     
     .products__title {
@@ -927,8 +929,10 @@ header > div:nth-child(2) > button:hover .modalUser{
 
     .mask {
         background-color: rgba(0, 0, 0, 0);
-        height: 50vw;
+        height: 0px;
         width: 25vw;
+
+        margin-top: 40px;
     }
 
     header > div:nth-child(2) > input {
@@ -940,3 +944,11 @@ header > div:nth-child(2) > button:hover .modalUser{
         right: 300px;
     }
 
+    .cart__closeX {
+        display: none;
+    }
+
+    .cart__value {
+        position: relative;
+        bottom: 74px;
+    }
