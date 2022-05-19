@@ -39,10 +39,18 @@ modal.addEventListener('click',(e)=>{
             window.location.reload()
         }
     }
+    
 })
 
 
 Dom.showcase(await ProductsPublic.getProducts())
+
+Dom.addItemCart()
+// Dom.createCart()
+// Dom.lenghtCart()
+// Dom.valueCart()
+Dom.cartMobile()
+
 
 
 // let teste = await ProductsPublic.getProducts()

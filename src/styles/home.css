@@ -198,6 +198,8 @@
         display: flex;
         align-items: center;
         justify-content: center;
+
+        border: none;
     }
 
     .buyBnt__img {
@@ -210,7 +212,8 @@
         
 
         position: absolute;
-        left: 10vw;
+        left: 18px;
+        right: 15px;
         top: 47px;
 
         font-family: 'Poppins', sans-serif;
@@ -223,10 +226,6 @@
     .conteiner__cart {
         background-color: var(--Color-primary);
         border-radius: 15.0938px 15.0938px 0px 0px;
-        
-        
-   
-           
     }
 
     .cart__title {
@@ -273,6 +272,7 @@
 
         flex-wrap: wrap;
     }
+
     .cart__products {
         display: flex;
        
@@ -281,16 +281,70 @@
         margin: 25px 6px;
     }
 
+    .cart__products { /*LI*/
+        display: flex;
+        justify-content: space-around;
+        align-items: flex-start;
+        flex-wrap: wrap;
+    }
+
+    .products__img {
+        width: 75.47px;
+        height: 75.47px;
+        border-radius: 8.625px;
+    }
+
+    .products__title {
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 20px;
+
+        width: 232.75px;
+
+        padding-left: 10px;
+       
+    }
+
     .products__category {
         position: relative;
-        top: 25px;
-        right: 30px;
+        bottom: 40px;
+        left: 85px;
+
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 16px;
     }
 
     .products__price {
-        position: relative;
-        top: 55px;
-        right: 107px;
+        
+
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        
+    }
+
+    .span__products__icon {
+        width: 26.95px;
+        height: 26.95px;
+
+        background-color: var(--Grey-1);
+        display: flex;
+        align-content: center;
+        align-items: center;
+        justify-content: center;
+
+        border: none;
+    }
+
+    .products__icon {
+        width: 10px;
+        height: 12px;
     }
 
     .cart__value {
@@ -336,19 +390,7 @@
         font-family: 'Poppins', sans-serif;
 
     }
-    .span__products__icon {
-        width: 26.95px;
-        height: 26.95px;
-        background-color: var(--Grey-1);
-        display: flex;
-        align-content: center;
-        align-items: center;
-        justify-content: center;
-    }
-    .products__icon {
-        width: 10px;
-        height: 12px;
-    }
+    
 
     footer {
         overflow: hidden;
