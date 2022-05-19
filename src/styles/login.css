@@ -15,8 +15,8 @@ body {
 
     display: flex;
     flex-direction: column;
-    width: 335px;
-    height: 375px;
+    width: 300px;
+    height: 410px;
     /* border: 1px solid black; */
     border-radius: 15px 15px;
     background: rgb(7,18,27);
@@ -37,10 +37,6 @@ body {
     
 }
 
-.box__register > img {
-    width: 45px;
-}
-
 .box__label--label {
     display: flex;
     flex-direction: column;
@@ -56,7 +52,7 @@ body {
     gap: 15px;
     font-family: 'Poppins';
     font-weight: 400;
-    margin-top: 10px;
+    margin-top: 35px;
     
 }
 
@@ -69,9 +65,9 @@ body {
 }
 
 .box__register input {
-    width: 250px;
-    height: 35px;
-    border-radius: 12px;
+    width: 220px;
+    height: 50px;
+    border-radius: 15px;
     font-family: 'Poppins';
     font-weight: 400;
     padding: 26px, 2px, 26px, 20px
@@ -93,9 +89,9 @@ body {
 }
 
 button{
-    width: 170px;
-    height: 35px;
-    border-radius: 12px;
+    width: 150px;
+    height: 50px;
+    border-radius: 15px;
     cursor: pointer;
     margin-top: 10px;
     font-weight: 500;
