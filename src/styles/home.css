@@ -810,10 +810,9 @@ header > div:nth-child(2) > button:hover .modalUser{
         width: 690px;
         height: 55px;
     }
-    
-}
 
-     header {
+    
+    header {
         display: flex;
         justify-content: space-between;
     }
@@ -950,3 +949,5 @@ header > div:nth-child(2) > button:hover .modalUser{
         position: relative;
         bottom: 74px;
     }
+
+}
