@@ -216,6 +216,7 @@ class Dom{
         `
     }
 
+
     static addItemCart() {
         const ulShowcase = document.querySelector('#showcase');
         ulShowcase.addEventListener('click', (event) => {
@@ -306,6 +307,36 @@ class Dom{
             if (closeX) {
                 mask.style.display = 'none';
             }
+
+    static listProductsDash(array){
+
+        const list = document.querySelector('.list');
+
+        list.innerHTML = ""
+
+        array.forEach((item) => {
+
+            let { categoria, descricao, id, imagem, nome, preco } = item
+
+            list.innerHTML += `
+            
+            <li class= "item__list--dash" id= "${id}">
+                <div class= "pic__name" >
+                    <img class= "img img_dash--produto" src = "${imagem}">
+                    <span class= "nome__produto">${nome}</span>         
+                </div>
+                <div class= "infos">
+                <div class= "cont__categoria"><span class= "categoria">${categoria}</span></div> 
+                    <span class= "description">${descricao}</span>
+                </div>                
+                <div class= "imgs">
+                    <img class= "img img_dash--edit" src= ${'../assets/edit_icon.svg'}>
+                    <img class= "img img_dash--delete" src= "${'../assets/trash_aside.svg'}">            
+                </div>
+
+            </li>
+            `
+
         })
     }
 

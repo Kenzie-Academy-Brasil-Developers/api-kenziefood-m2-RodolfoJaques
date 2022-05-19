@@ -450,6 +450,8 @@ header{
     display: flex;
     flex-wrap: wrap;
     width: auto;
+    overflow-x: hidden;
+    overflow-y: hidden;
 }
 header > div{
     display: flex;
@@ -531,17 +533,19 @@ header > div:nth-child(2) > button:hover > div:nth-child(2){
     position: relative;
     left: -15px;
     top: 35px;
+    z-index: 2;
 }
 header > div:nth-child(2) > button:hover .modalUser{
     display: block;
     position: absolute;
     right: 0px;
     top: 45px;
-    width: 206px;
-    height: 127px;
+    width: 350px;
+    height: 55px;
     background: #FFFFFF;
     box-shadow: 0px 4px 38px rgba(0, 0, 0, 0.15);
     border-radius: 8px;
+    z-index: 1;
 }
 
 .nameUser{
@@ -550,7 +554,8 @@ header > div:nth-child(2) > button:hover .modalUser{
     font-weight: 400;
     font-size: 14px;
     line-height: 24px;
-    width: 180px;
+    display: inline;
+    width: auto;
     text-align: start;
     padding: 12px 15px;
     border-bottom: 2px solid var(--Grey-2);
@@ -561,7 +566,7 @@ header > div:nth-child(2) > button:hover .modalUser{
     background: var(--Grey-1);
     font-family: 'Inter', sans-serif;
     font-style: normal;
-    width: 60%;
+    width: 90px;
     height: 25px;
     margin-top: 10px;
     font-weight: 500;
@@ -591,6 +596,8 @@ header > div:nth-child(2) > button:hover .modalUser{
         padding: 11px 118px 0 117px;
         justify-content: space-between;
         align-items: center;
+        overflow-x: unset;
+        overflow-y: unset;
     }
     header > div > p:nth-child(2){
         margin: 0 0;
@@ -629,24 +636,29 @@ header > div:nth-child(2) > button:hover .modalUser{
         visibility: hidden;
     }
     header > div:nth-child(2) > button:hover > div:nth-child(2){
-        background-color: #FFFFFF;
         left: 0px;
         bottom: 0px;
         transition-delay: 0s;
         visibility: visible;
+        z-index: 2;
     }
     header > div:nth-child(2) > button:hover > .modalUser{
         right: 120px;
         top: 65px;
+        width: 206px;
+        height: 127px;
         transition-delay: 0s;
         visibility: visible;
+        z-index: 1;
     
     }
     .nameUser{
         width: 175px;
+        display: block;
     }
     .modalUser > button{
         cursor: pointer;
+        width: 60%;
     }
     .modalUser > button:hover{
         border: 2px solid var(--Grey-3);
