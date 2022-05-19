@@ -934,22 +934,33 @@ header > div:nth-child(2) > button:hover .modalUser{
     /*__________list style___________*/
 
     .prod__action{
-
-        margin: 40px 13% 0px 13%;
+        color: var(--Grey-3);
+    
+        font-family: 'Inter';
+        font-style: normal;
+        font-size: smaller;
+    
         display: flex;
-        justify-content: space-between;
+        justify-content: space-around;
         
+    
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-top: 30px;
+    
+        padding-right: 68px;
+        padding-left: 98px;
     }
 
     .prod__action p{
-        display: flex;
-        
+        display: flex;       
         
     }
 
     .margem{
 
-        margin-left:100px;
+        margin-right: 230px;
+        margin-left: 230px;
     }
 
     .list{
