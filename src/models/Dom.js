@@ -9,11 +9,6 @@ class Dom{
     static arrayLocal = this.fixObject()
     static arrayServer = []
 
-
-
-
-
-
     static async showcase(arrayObj) {
         const ulShowcase = document.querySelector('.showcase__home');
         ulShowcase.innerHTML = ''
@@ -231,17 +226,21 @@ class Dom{
 
 
     static async addItemCart() {
-        let arrayServerReceive = await Cart.getMyCartProducts()
-        if(arrayServerReceive.length !== 0){
-            arrayServerReceive.forEach(element => {
-                for(let i = 0; i < element.quantity;i++){
-                    Dom.arrayCart.push(element.products)
-                }
-            });
-            Dom.valueCart(Dom.arrayCart);
-            Dom.createCart(Dom.arrayCart);
-            Dom.lengthCart(Dom.arrayCart);    
+        
+        if(localStorage.getItem('token') !== null){
+            let arrayServerReceive = await Cart.getMyCartProducts()
+            if(arrayServerReceive.length !== 0){
+                arrayServerReceive.forEach(element => {
+                    for(let i = 0; i < element.quantity;i++){
+                        Dom.arrayCart.push(element.products)
+                    }
+                });
+                Dom.valueCart(Dom.arrayCart);
+                Dom.createCart(Dom.arrayCart);
+                Dom.lengthCart(Dom.arrayCart);    
+            }
         }
+
         
         const ulShowcase = document.querySelector('#showcase');
         ulShowcase.addEventListener('click', async (event) => {
@@ -274,9 +273,6 @@ class Dom{
                     this.arrayServer.forEach(async element => {
                         await Cart.addProductsMyCart(element)
                     });
-                    // this.objectAll = this.addCartObject(Dom.arrayCart)
-                    // sessionStorage.clear()
-                    // sessionStorage.setItem(`${Object.keys(this.objectAll)}`,Object.values(this.objectAll))
                 }
             }
         })
@@ -297,9 +293,6 @@ class Dom{
             }else{
                 array.push(item.preco);
             }
-        //    let sliceItem = item.preco.slice((3));
-        //    let numberItem = Number(sliceItem);
-           
        })
 
        let totalValue = array.reduce((acc, current) => acc + current, 0);
@@ -395,33 +388,19 @@ class Dom{
 
 
     static addCartObject(array){
-            let obj = {}
-        
-            array.forEach(element => {
-                
-                obj[`${element.id}`] = 0
-        
-            });
-        
-            array.forEach(element => {
-                
-                obj[`${element.id}`] = obj[`${element.id}`] + 1
-        
-            });
-        
-            return obj  
+        let obj = {}
+        array.forEach(element => {
+            obj[`${element.id}`] = 0
+        });
+        array.forEach(element => {
+            obj[`${element.id}`] = obj[`${element.id}`] + 1
+        });
+        return obj  
     }
 
 
     static async fixObject(){
-        let newArrayApi = []
         let obj = {}
-        let objApi = {}
-        let arrayResponse = []
-        // let token = localStorage.getItem('token')
-        // if(token !== null){
-        //     Object.entries(localStorage)
-        // }
         let key 
         let value
         if(Object.entries(localStorage).length > 0){
@@ -429,21 +408,14 @@ class Dom{
             value = Object.entries(localStorage)[0][1].split(',')        
             
             key.forEach((element,i) => {
-                objApi = {}
                 obj[`${element}`] = value[i]
-                objApi.product_id = element
-                objApi.quantity = value[i]
-                newArrayApi.push(objApi)
             });
         }
-        
-
         let array = await ProductsPublic.getProducts()
         let newArray = []
 
         Object.keys(obj).forEach((element,index) => {
             
-            // let { categoria, descricao, id,imagem,nome,preco } = objetoTeste
             for(let i = 0 ; i < Number(Object.values(obj)[index]); i++){   
                 
                 let objeto = array.filter(elem => element === elem.id)[0]
@@ -456,18 +428,8 @@ class Dom{
         for(let i = 0 ; i < newArray.length; i++){
             newArray[i].num = i
         }
-
-        if(localStorage.getItem('token')!== null){
-            for(let i = 0 ; i < newArrayApi.length; i++){
-                newArrayApi[i].num = i
-            }
-
-        }
-        arrayResponse.push(newArray)
-        arrayResponse.push(newArrayApi)
         return newArray
     }
-
 
     static fixObjectApi(object){
         let keys = Object.keys(object)
@@ -492,11 +454,7 @@ class Dom{
         trashBtn.addEventListener('click', async (event) => {
             event.preventDefault();
 
-
             if(event.target.nodeName === 'IMG'){
-                // console.log(event.target.parentNode.parentNode)
-                // event.target.parentNode.parentNode.remove()
-                // let arrayDelete =  Dom.arrayCart.c event.target.parentNode.id
                 
                 Dom.deletArrayCart = Dom.arrayCart.filter((e) => e.num !== Number(event.target.id))
                 Dom.arrayCart = Dom.deletArrayCart
@@ -514,17 +472,12 @@ class Dom{
                         localStorage.setItem(`${Object.keys(this.objectAll)}`,Object.values(this.objectAll))   
                     }
                     
-
-                } else{
+                }else if(localStorage.getItem('token') !== null){
                     await Cart.deleteMyProductFromCart(event.target.parentNode.id)
                     window.location.reload()
-                }   
-                
+                }      
             }      
-
-
-        })
-        
+        })   
     }
 
     static modalRegisterError(){

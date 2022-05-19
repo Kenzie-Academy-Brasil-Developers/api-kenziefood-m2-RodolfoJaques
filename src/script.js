@@ -46,50 +46,17 @@ modal.addEventListener('click',(e)=>{
 
 
 Dom.showcase(await ProductsPublic.getProducts())
-
 Dom.addItemCart()
-// Dom.createCart()
-// Dom.lenghtCart()
-// Dom.valueCart()
 Dom.cartMobile()
 
 if(await Dom.arrayLocal.length !== 0){
-    if(localStorage.getItem('token') !== null){
-        //console.log(await Dom.arrayLocal)
-        // Dom.arrayCart = await Dom.arrayLocal
-        // Dom.valueCart(Dom.arrayCart[0]);
-        // Dom.createCart(Dom.arrayCart[0]);
-        // Dom.lengthCart(Dom.arrayCart[0]);
-    }else{
+    if(localStorage.getItem('token') === null){
         Dom.arrayCart = await Dom.arrayLocal
         Dom.valueCart(Dom.arrayCart);
         Dom.createCart(Dom.arrayCart);
         Dom.lengthCart(Dom.arrayCart); 
     }
-
-    
 }  
-
-// if(localStorage.getItem('token') !== null){
-//     await Cart.addProductsMyCart(Dom.arrayCart)
-// }
-// Dom.arrayCart = await Dom.arrayLocal
-
-// let arrayTeste = await Dom.fixObject()
-// let arrayItens = []
-// let objItem = {}
-// let arrayKey = arrayTeste[0]
-// let arrayValue = arrayTeste[1]
-// console.log(arrayKey.length)
-// for(let i = 0; i < arrayKey.length; i++){
-//     objItem = {}
-//     objItem.product_id = arrayKey[i]
-//     objItem.quantity = arrayValue[i]
-//     arrayItens.push(objItem)
-// }
-
-// console.log(Dom.arrayCart)
-
 
 
 
@@ -109,11 +76,3 @@ filterText.addEventListener('keydown', async (e)=>{
         Dom.showcase(Filters.filterBySearch(arrayTotal, e.target.value))
     }
 })
-
-
-
-
-
-
-// let teste = await ProductsPublic.getProducts()
-// console.log(teste)
