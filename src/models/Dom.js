@@ -404,7 +404,7 @@ class Dom{
         // }
         let key 
         let value
-        // if(Object.entries(localStorage).length > 1){
+        if(Object.entries(localStorage).length > 0){
             key = Object.entries(localStorage)[0][0].split(',')
             value = Object.entries(localStorage)[0][1].split(',')        
             
@@ -415,7 +415,7 @@ class Dom{
                 objApi.quantity = value[i]
                 newArrayApi.push(objApi)
             });
-        // }
+        }
         
 
         let array = await ProductsPublic.getProducts()
