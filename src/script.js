@@ -55,6 +55,7 @@ Dom.cartMobile()
 
 if(await Dom.arrayLocal.length !== 0){
     if(localStorage.getItem('token') !== null){
+        //console.log(await Dom.arrayLocal)
         // Dom.arrayCart = await Dom.arrayLocal
         // Dom.valueCart(Dom.arrayCart[0]);
         // Dom.createCart(Dom.arrayCart[0]);
