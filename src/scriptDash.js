@@ -1,6 +1,7 @@
 import { ProductsPrivate } from "./controllers/ProductsPrivate.js";
 import { Dom } from "./models/Dom.js";
 import { ProductsPublic } from "./controllers/ProductsPublic.js"
+import { Filters } from "./models/Filters.js";
 
 
 let dashboard = {
@@ -199,11 +200,53 @@ function registerProduct(){
 
 
 
+let filterTag = document.querySelector('.nav_itensAndBotao')
+filterTag.addEventListener('click', async (e)=>{
+    if(e.target.nodeName === 'BUTTON' && e.target.innerText!== 'Adicionar novo produto'){
+       Dom.listProductsDash(Filters.categoryFilter(await ProductsPublic.getProducts(), e.target.innerText))
+    }
+})
+
+let filterText = document.querySelector('header')
+filterText.addEventListener('keydown', async (e)=>{
+    if(e.target.nodeName === 'INPUT'){
+        Dom.listProductsDash(Filters.filterBySearch(await ProductsPublic.getProducts(), e.target.value))
+    }
+})
+
+let editProductBtn = document.querySelector('.list')
+editProductBtn.addEventListener('click', async (e)=>{
+    if(e.target.classList[1] === 'img_dash--edit'){
+        editProduct(Filters.filterById(await ProductsPublic.getProducts(), e.target.parentNode.id)[0])
+    }
+})
+
+// let deleteProductBtn = document.querySelector('.list')
+// deleteProductBtn.addEventListener('click', async (e)=>{
+//     if(e.target.classList[1] === 'img_dash--delete'){
+//         Dom.modalDeleteProduct()
+//         let modalDelete = document.getElementById('modal__delete')
+//         modalDelete.addEventListener('click', async (e)=>{
+//             if(e.target.innerText === 'Sim'){
+//                 let response = await ProductsPrivate.deleteMyProducts(e.target.parentNode.id)
+//                 modalDelete.classList.remove('active__delete')
+//                 modalDelete.innerHTML = ''
+//                 console.log(response)
+//                 modalSelectModal(response)
+//             }else if(e.target.innerText === 'Não'){
+//                 modalDelete.classList.remove('active__delete')
+//                 modalDelete.innerHTML = ''
+//             }else if(e.target.innerText === 'X'){
+//                 modalDelete.classList.remove('active__delete')
+//                 modalDelete.innerHTML = ''
+//             }
+//         })
+//     }
+// })
 
 
 
-
-//registerProduct()
+// registerProduct()
 // editProduct({
 //     nome: "Bolinho",
 //     preco: 5,
