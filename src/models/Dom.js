@@ -216,7 +216,7 @@ class Dom{
     static listProductsDash(array){
 
         const list = document.querySelector('.list');
-
+        list.innerHTML = ''
         array.forEach((item) => {
 
             let { categoria, descricao, id, imagem, nome, preco } = item
