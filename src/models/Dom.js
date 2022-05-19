@@ -1,5 +1,6 @@
 class Dom{
-
+    static arrayCart = [];
+    static deletArrayCart = [];
 
     static async showcase(arrayObj) {
         const ulShowcase = document.querySelector('.showcase__home');
@@ -43,12 +44,14 @@ class Dom{
         price.classList.add('card__price');
         price.textContent = `R$ ${preco.toFixed(2)}`;
 
-        const divBuy = document.createElement('div');
+        const divBuy = document.createElement('button');
         divBuy.classList.add('card__buyBtn');
-
+        divBuy.id = 'btn__buy';
+       
         const buyBtn = document.createElement('img');
         buyBtn.src = '../src/assets/carrinho_vitrine.svg';
         buyBtn.classList.add('buyBnt__img');
+        
 
         divBuy.append(buyBtn);
         divCartCard.append(price, divBuy);
@@ -213,8 +216,113 @@ class Dom{
         `
     }
 
+    static addItemCart() {
+        const ulShowcase = document.querySelector('#showcase');
+        ulShowcase.addEventListener('click', (event) => {
+            if (event.target.id === 'btn__buy' || event.target.classList[0] === 'buyBnt__img') {
+                let card = {
+                    image: event.target.closest('li').children[0].src,
+                    categoria: event.target.closest('li').children[3].innerHTML,
+                    id: event.target.closest('li').id,
+                    nome: event.target.closest('li').children[1].innerHTML,
+                    preco: event.target.closest('li').children[4].children[0].innerHTML,
+                }
 
+                Dom.arrayCart.push(card);
+                
+                Dom.valueCart(Dom.arrayCart);
+                Dom.createCart(Dom.arrayCart);
+                Dom.lengthCart(Dom.arrayCart);
+            }
+        })
 
+    }
+
+    static valueCart(arrayCart) {
+        const spanValue = document.querySelector('#valueTotal');
+        spanValue.innerHTML = '';
+
+        let array = [];
+
+        arrayCart.forEach((item) => {
+           let sliceItem = item.preco.slice((3));
+           let numberItem = Number(sliceItem);
+           array.push(numberItem);
+       })
+
+       let totalValue = array.reduce((acc, current) => acc + current, 0);
+       spanValue.innerHTML = totalValue.toFixed(2);
+    }
+
+    static createCart(arrayCart) {
+        const ulCartContent = document.querySelector('.cart__card');
+        ulCartContent.innerHTML = '';
+
+        arrayCart.forEach( ({image, id, nome, preco, categoria}) => {
+            const li = document.createElement('li');
+            li.classList.add('cart__products');
+            li.id = id;
+
+            li.innerHTML =`
+            <img class='products__img' src="${image}" alt="${nome}">
+            <h3 class='products__title'>${nome}</h3>
+            <span class='products__category'>${categoria}</span>
+            <p class='products__price'>${preco}</p>
+            <button id="${id}" class='span__products__icon'>
+                <img class='products__icon' src="./src/assets/trash_aside.svg">
+            </button>
+            `
+            ulCartContent.append(li);
+
+        })  
+        
+        console.log(Dom.arrayCart)
+    }
+
+    static lengthCart(arrayCart) {
+        const valueTotal = document.querySelector('#length__value')
+        let cartLength = arrayCart.map(item => item).length;
+        valueTotal.innerHTML = cartLength;
+    }
+
+    static cartMobile() {
+        const btnCart = document.querySelector('.button__moblie');
+        const mask = document.querySelector('.mask');
+        btnCart.addEventListener('click', (event) => {
+            event.preventDefault();
+            if (event.target) {
+                mask.style.display = 'block';
+            }            
+        })
+        Dom.closeMobile();
+        Dom.deletCart(Dom.arrayCart);
+    }
+
+    static closeMobile() {
+        const mask = document.querySelector('.mask');
+        const closeX = document.querySelector('.cart__closeX');
+        closeX.addEventListener('click', (event) => {
+            event.preventDefault();
+            if (closeX) {
+                mask.style.display = 'none';
+            }
+        })
+    }
+
+    static deletCart(arrayCart) {
+        const trashBtn = document.querySelector('.cart__card');        
+       
+        // console.log()
+        trashBtn.addEventListener('click', (event) => {
+            event.preventDefault();
+
+            Dom.deletArrayCart = arrayCart.filter((element) => element.id !== event.target.parentNode.id)
+            console.log(Dom.deletArrayCart)
+            Dom.arrayCart = Dom.deletArrayCart
+            Dom.createCart()
+        })
+        
+    }
 }
 
 export{Dom}
