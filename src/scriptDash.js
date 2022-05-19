@@ -39,7 +39,7 @@ document.body.addEventListener('click', () => {
 
 function modalSelectModal(param){
 
-    if(param.status === "error" || param.message === "Token Invalido"){
+    if(param.status === "error" || param.message === "Token Invalido" || param.status >= 400 || param.status <= 500 || param === undefined){
 
         Dom.modalStatusError()
 
@@ -142,17 +142,21 @@ function deleteProdutoEdit (id){
 }
 
 
+let arrayTotal = await ProductsPrivate.getMyProducts()
 
+if(arrayTotal.length === 0){
+    arrayTotal = await ProductsPublic.getProducts()
+}
 
 
 async function creatCardsDash() {
     
-    const data = await ProductsPublic.getProducts()    
-    Dom.listProductsDash(data)
+    // const data = await ProductsPublic.getProducts()    
+    Dom.listProductsDash(arrayTotal)
 
 }
 
-function editProduct(object){
+function editProduct(object, id){
     Dom.modalEditProduct()
     reciveInfo(object)
     clickCategory('modal__edit')
@@ -163,10 +167,14 @@ function editProduct(object){
             edit.classList.remove('active__edit')
             edit.innerHTML = ''
         }
+        if(e.target.innerText === "Excluir"){
+            deleteProdutoEdit(id)
+        } 
         if(e.target.innerText === "Salvar alterações"){
             sessionStorage.removeItem('categoria')
             let obj = getInfo()
-            let response = await ProductsPrivate.editMyProducts(obj)
+            let response = await ProductsPrivate.editMyProducts(obj,id)
+            console.log(response)
             edit.classList.remove('active__edit')
             edit.innerHTML = ''
             modalSelectModal(response)
@@ -186,7 +194,7 @@ function registerProduct(){
         if(e.target.innerText === "X"){
             register.classList.remove('active__register')
             register.innerHTML = ''
-        }  
+        } 
         if(e.target.innerText === "Cadastrar Produto"){
             sessionStorage.removeItem('categoria')
             let obj = getInfo()
@@ -203,46 +211,55 @@ function registerProduct(){
 let filterTag = document.querySelector('.nav_itensAndBotao')
 filterTag.addEventListener('click', async (e)=>{
     if(e.target.nodeName === 'BUTTON' && e.target.innerText!== 'Adicionar novo produto'){
-       Dom.listProductsDash(Filters.categoryFilter(await ProductsPublic.getProducts(), e.target.innerText))
+       Dom.listProductsDash(Filters.categoryFilter(arrayTotal, e.target.innerText))
     }
 })
 
 let filterText = document.querySelector('header')
 filterText.addEventListener('keydown', async (e)=>{
     if(e.target.nodeName === 'INPUT'){
-        Dom.listProductsDash(Filters.filterBySearch(await ProductsPublic.getProducts(), e.target.value))
+        Dom.listProductsDash(Filters.filterBySearch(arrayTotal, e.target.value))
     }
 })
+
+let addProductBtn = document.querySelector('.nav_itensAndBotao')
+addProductBtn.addEventListener('click', async (e)=>{
+    if(e.target.nodeName === 'BUTTON' && e.target.innerText === 'Adicionar novo produto'){
+        registerProduct()
+     }
+})
+
 
 let editProductBtn = document.querySelector('.list')
 editProductBtn.addEventListener('click', async (e)=>{
     if(e.target.classList[1] === 'img_dash--edit'){
-        editProduct(Filters.filterById(await ProductsPublic.getProducts(), e.target.parentNode.id)[0])
+        
+        editProduct(Filters.filterById(arrayTotal, e.target.parentNode.parentNode.id)[0],e.target.parentNode.parentNode.id)
     }
 })
 
-// let deleteProductBtn = document.querySelector('.list')
-// deleteProductBtn.addEventListener('click', async (e)=>{
-//     if(e.target.classList[1] === 'img_dash--delete'){
-//         Dom.modalDeleteProduct()
-//         let modalDelete = document.getElementById('modal__delete')
-//         modalDelete.addEventListener('click', async (e)=>{
-//             if(e.target.innerText === 'Sim'){
-//                 let response = await ProductsPrivate.deleteMyProducts(e.target.parentNode.id)
-//                 modalDelete.classList.remove('active__delete')
-//                 modalDelete.innerHTML = ''
-//                 console.log(response)
-//                 modalSelectModal(response)
-//             }else if(e.target.innerText === 'Não'){
-//                 modalDelete.classList.remove('active__delete')
-//                 modalDelete.innerHTML = ''
-//             }else if(e.target.innerText === 'X'){
-//                 modalDelete.classList.remove('active__delete')
-//                 modalDelete.innerHTML = ''
-//             }
-//         })
-//     }
-// })
+let deleteProductBtn = document.querySelector('.list')
+deleteProductBtn.addEventListener('click', async (e)=>{
+    if(e.target.classList[1] === 'img_dash--delete'){
+        const idProduct = e.target.parentNode.parentNode.id
+        Dom.modalDeleteProduct()
+        let modalDelete = document.getElementById('modal__delete')
+        modalDelete.addEventListener('click', async (e)=>{
+            if(e.target.innerText === 'Sim'){
+                let response = await ProductsPrivate.deleteMyProducts(idProduct)
+                modalDelete.classList.remove('active__delete')
+                modalDelete.innerHTML = ''
+                modalSelectModal(response)
+            }else if(e.target.innerText === 'Não'){
+                modalDelete.classList.remove('active__delete')
+                modalDelete.innerHTML = ''
+            }else if(e.target.innerText === 'X'){
+                modalDelete.classList.remove('active__delete')
+                modalDelete.innerHTML = ''
+            }
+        })
+    }
+})
 
 
 
