@@ -54,11 +54,18 @@ Dom.addItemCart()
 Dom.cartMobile()
 
 if(await Dom.arrayLocal.length !== 0){
+    if(localStorage.getItem('token') !== null){
+        Dom.arrayCart = await Dom.arrayLocal
+        Dom.valueCart(Dom.arrayCart[0]);
+        Dom.createCart(Dom.arrayCart[0]);
+        Dom.lengthCart(Dom.arrayCart[0]);
+    }else{
+        Dom.arrayCart = await Dom.arrayLocal
+        Dom.valueCart(Dom.arrayCart[0]);
+        Dom.createCart(Dom.arrayCart[0]);
+        Dom.lengthCart(Dom.arrayCart[0]); 
+    }
 
-    Dom.arrayCart = await Dom.arrayLocal
-    Dom.valueCart(Dom.arrayCart);
-    Dom.createCart(Dom.arrayCart);
-    Dom.lengthCart(Dom.arrayCart);
     
 }  
 
@@ -66,10 +73,23 @@ if(await Dom.arrayLocal.length !== 0){
 //     await Cart.addProductsMyCart(Dom.arrayCart)
 //     console.log(await Cart.getMyCartProducts())
 // }
+Dom.arrayCart = await Dom.arrayLocal
+console.log(Dom.arrayCart[0])
 
+// let arrayTeste = await Dom.fixObject()
+// let arrayItens = []
+// let objItem = {}
+// let arrayKey = arrayTeste[0]
+// let arrayValue = arrayTeste[1]
+// console.log(arrayKey.length)
+// for(let i = 0; i < arrayKey.length; i++){
+//     objItem = {}
+//     objItem.product_id = arrayKey[i]
+//     objItem.quantity = arrayValue[i]
+//     arrayItens.push(objItem)
+// }
 
-
-// console.log(await Dom.fixObject())
+// console.log(arrayItens)
 
 
 

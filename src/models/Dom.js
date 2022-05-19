@@ -229,7 +229,6 @@ class Dom{
 
 
     static addItemCart() {
-        console
         const ulShowcase = document.querySelector('#showcase');
         ulShowcase.addEventListener('click', (event) => {
             if (event.target.id === 'btn__buy' || event.target.classList[0] === 'buyBnt__img') {
@@ -252,8 +251,12 @@ class Dom{
                 if(localStorage.getItem('token') === null){
                     
                     this.objectAll = this.addCartObject(Dom.arrayCart)
-                    localStorage.clear()
-                    localStorage.setItem(`${Object.keys(this.objectAll)}`,Object.values(this.objectAll))
+                    sessionStorage.clear()
+                    sessionStorage.setItem(`${Object.keys(this.objectAll)}`,Object.values(this.objectAll))
+                }else{
+                    this.objectAll = this.addCartObject(Dom.arrayCart)
+                    sessionStorage.clear()
+                    sessionStorage.setItem(`${Object.keys(this.objectAll)}`,Object.values(this.objectAll))
                 }
             }
         })
@@ -394,16 +397,19 @@ class Dom{
         let newArrayApi = []
         let obj = {}
         let objApi = {}
+        let arrayResponse = []
         // let token = localStorage.getItem('token')
         // if(token !== null){
         //     Object.entries(localStorage)
         // }
         let key 
-        let value 
-        if(Object.entries(localStorage).length !== 0 && localStorage.getItem('token')=== null){
-            key = Object.entries(localStorage)[0][0].split(',')
-            value = Object.entries(localStorage)[0][1].split(',')        
+        let value
+        if(Object.entries(sessionStorage).length > 1){
+            key = Object.entries(sessionStorage)[1][0].split(',')
+            value = Object.entries(sessionStorage)[1][1].split(',')        
+            
             key.forEach((element,i) => {
+                objApi = {}
                 obj[`${element}`] = value[i]
                 objApi.product_id = element
                 objApi.quantity = value[i]
@@ -414,23 +420,31 @@ class Dom{
 
         let array = await ProductsPublic.getProducts()
         let newArray = []
-        
 
         Object.keys(obj).forEach((element,index) => {
-    
-            let objeto = {}
-            for(let i = 0 ; i < Number(Object.values(obj)[index]); i++){
-                objeto = array.filter(elem => element === elem.id)[0]
-                objeto.num = 0
-                newArray.push(objeto)
             
+            // let { categoria, descricao, id,imagem,nome,preco } = objetoTeste
+            for(let i = 0 ; i < Number(Object.values(obj)[index]); i++){   
+                let objeto= array.filter(elem => element === elem.id)[0]
+                let { categoria, descricao, id,imagem,nome,preco } = objeto
+                newArray.push({ categoria, descricao, id,imagem,nome,preco })
             }
 
         });
-        if(localStorage.getItem('token')!== null){
-            return newArrayApi
+
+        for(let i = 0 ; i < newArray.length; i++){
+            newArray[i].num = i
         }
-        return newArray
+
+        if(localStorage.getItem('token')!== null){
+            for(let i = 0 ; i < newArrayApi.length; i++){
+                newArrayApi[i].num = i
+            }
+
+        }
+        arrayResponse.push(newArray)
+        arrayResponse.push(newArrayApi)
+        return arrayResponse
     }
 
 
@@ -456,15 +470,23 @@ class Dom{
                 if(localStorage.getItem('token') === null){
                     
                     if(Dom.arrayCart.length === 0){
-                        localStorage.clear()
+                        sessionStorage.clear()
                     }else{
                         this.objectAll = this.addCartObject(Dom.arrayCart)
-                        localStorage.clear()
-                        localStorage.setItem(`${Object.keys(this.objectAll)}`,Object.values(this.objectAll))   
+                        sessionStorage.clear()
+                        sessionStorage.setItem(`${Object.keys(this.objectAll)}`,Object.values(this.objectAll))   
                     }
                     
 
-                }     
+                } else{
+                    if(Dom.arrayCart.length === 1){
+                        sessionStorage.clear()
+                    }else{
+                        this.objectAll = this.addCartObject(Dom.arrayCart)
+                        sessionStorage.clear()
+                        sessionStorage.setItem(`${Object.keys(this.objectAll)}`,Object.values(this.objectAll))   
+                    }
+                }   
                 
             }      
 
