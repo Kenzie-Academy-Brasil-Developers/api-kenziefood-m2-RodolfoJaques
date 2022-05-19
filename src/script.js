@@ -87,7 +87,7 @@ if(await Dom.arrayLocal.length !== 0){
 //     arrayItens.push(objItem)
 // }
 
-console.log(Dom.arrayCart)
+// console.log(Dom.arrayCart)
 
 
 

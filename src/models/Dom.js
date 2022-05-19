@@ -251,8 +251,8 @@ class Dom{
                 if(localStorage.getItem('token') === null){
                     
                     this.objectAll = this.addCartObject(Dom.arrayCart)
-                    sessionStorage.clear()
-                    sessionStorage.setItem(`${Object.keys(this.objectAll)}`,Object.values(this.objectAll))
+                    localStorage.clear()
+                    localStorage.setItem(`${Object.keys(this.objectAll)}`,Object.values(this.objectAll))
                 }else{
                     // this.objectAll = this.addCartObject(Dom.arrayCart)
                     // sessionStorage.clear()
@@ -404,9 +404,9 @@ class Dom{
         // }
         let key 
         let value
-        if(Object.entries(sessionStorage).length > 1){
-            key = Object.entries(sessionStorage)[1][0].split(',')
-            value = Object.entries(sessionStorage)[1][1].split(',')        
+        // if(Object.entries(localStorage).length > 1){
+            key = Object.entries(localStorage)[0][0].split(',')
+            value = Object.entries(localStorage)[0][1].split(',')        
             
             key.forEach((element,i) => {
                 objApi = {}
@@ -415,7 +415,7 @@ class Dom{
                 objApi.quantity = value[i]
                 newArrayApi.push(objApi)
             });
-        }
+        // }
         
 
         let array = await ProductsPublic.getProducts()
@@ -471,11 +471,11 @@ class Dom{
                 if(localStorage.getItem('token') === null){
                     
                     if(Dom.arrayCart.length === 0){
-                        sessionStorage.clear()
+                        localStorage.clear()
                     }else{
                         this.objectAll = this.addCartObject(Dom.arrayCart)
-                        sessionStorage.clear()
-                        sessionStorage.setItem(`${Object.keys(this.objectAll)}`,Object.values(this.objectAll))   
+                        localStorage.clear()
+                        localStorage.setItem(`${Object.keys(this.objectAll)}`,Object.values(this.objectAll))   
                     }
                     
 
