@@ -57,9 +57,6 @@ class ProductsPrivate {
             },
 
         })
-        .then((res)=>res.json())
-        .then((res)=>res)
-        .catch((error)=>error)
         return answer
     }
 }
