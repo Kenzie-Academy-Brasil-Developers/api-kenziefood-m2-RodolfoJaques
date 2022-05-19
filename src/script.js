@@ -2,6 +2,7 @@ import { Dom } from "./models/Dom.js";
 import { User } from "./controllers/User.js";
 import { Filters } from "./models/Filters.js";
 import { ProductsPublic } from "./controllers/ProductsPublic.js";
+import { Cart } from "./controllers/Cart.js";
 
 
 let noLogin = {
@@ -50,6 +51,24 @@ Dom.addItemCart()
 // Dom.lenghtCart()
 // Dom.valueCart()
 Dom.cartMobile()
+
+if(await Dom.arrayLocal.length !== 0){
+
+    Dom.arrayCart = await Dom.arrayLocal
+    Dom.valueCart(Dom.arrayCart);
+    Dom.createCart(Dom.arrayCart);
+    Dom.lengthCart(Dom.arrayCart);
+    
+}  
+
+// if(localStorage.getItem('token') !== null){
+//     await Cart.addProductsMyCart(Dom.arrayCart)
+//     console.log(await Cart.getMyCartProducts())
+// }
+
+
+
+console.log(await Dom.fixObject())
 
 
 
