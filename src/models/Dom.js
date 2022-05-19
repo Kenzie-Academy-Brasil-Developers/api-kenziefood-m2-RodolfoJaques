@@ -61,6 +61,7 @@ class Dom{
     }
     
     static modalStatus = document.querySelector(".active__status")
+    static modalError = document.querySelector(".main")
 
     static createHeader(){
         let header = document.querySelector('header')
@@ -356,6 +357,24 @@ class Dom{
         })
         
     }
+
+    static modalRegisterError(){
+
+        const containerModalError = document.createElement('div')
+        containerModalError.innerHTML = `
+        
+        <div class="modal__error">
+            <div class="error__button">
+                <p class="error">Error</p>
+                <button>x</button>
+            </div>
+            <p class="modal__Error--message">CADASTRO INVALIDO... Tente novamente!</p>
+            <div class="status__error--red"></div>
+        </div>
+        `
+        Dom.modalError.appendChild(containerModalError)
+    }
 }
+
 
 export{Dom}

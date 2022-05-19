@@ -89,6 +89,74 @@
     opacity: 0.6;
 }
 
+/*_______________modal error cadastro________________*/
+
+.modal__error{
+
+    position: absolute;
+    bottom: 3vh;
+    right: 3.3vw;
+
+    width: 350px;
+    height: 90px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 15px;
+
+}
+
+.error__button{
+
+    background-color: #F8F9FA;
+    height: 18px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 17px;
+    gap: 26px;
+
+    border-radius: 15px 15px 0px 0px;
+}
+
+.error__button button{
+
+    border-style: none;
+    border-radius: 5px;
+}
+
+.error__button button:hover{
+    cursor: pointer;
+    opacity: 0.9;
+}
+
+.error{
+    color: var(--Grey-4);
+
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 900;
+    font-size: 14px;
+    line-height: 20px;
+
+}
+
+.modal__Error--message{
+
+    font-size: small;
+    padding-left: 10px;
+}
+
+.status__error--red{
+
+    background-color: var(--Color-primary);
+    height: 10px;
+    border-radius: 0px 0px 15px 15px;
+}
+
 @media (min-width: 769px) {
 
     .cadastro{
@@ -159,7 +227,14 @@
     
         opacity: 0.6;
     }
-       
+    
+    .modal__error{
+
+        position: absolute;
+        top: 3vh;
+        right: 40.5%;
+        left: 40.5%;
+    }
 }
 
 
