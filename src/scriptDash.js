@@ -152,7 +152,6 @@ function deleteProdutoEdit (id){
                     let response = await ProductsPrivate.deleteMyProducts(id)
                     modalDelete.classList.remove('active__delete')
                     modalDelete.innerHTML = ''
-                    console.log(response.status)
                     modalSelectModal(response,'delete')
                 }else if(e.target.innerText === 'Não'){
                     modalDelete.classList.remove('active__delete')
@@ -199,7 +198,6 @@ function editProduct(object, id){
             sessionStorage.removeItem('categoria')
             let obj = getInfo()
             let response = await ProductsPrivate.editMyProducts(obj,id)
-            console.log(response)
             edit.classList.remove('active__edit')
             edit.innerHTML = ''
             modalSelectModal(response)
@@ -226,7 +224,6 @@ function registerProduct(){
             let response = await ProductsPrivate.createMyProducts(obj)
             register.classList.remove('active__register')
             register.innerHTML = ''
-            console.log(response)
             modalSelectModal(response)
         }
     })
@@ -276,7 +273,6 @@ deleteProductBtn.addEventListener('click', async (e)=>{
                 let response = await ProductsPrivate.deleteMyProducts(idProduct)
                 modalDelete.classList.remove('active__delete')
                 modalDelete.innerHTML = ''
-                console.log('response')
                 modalSelectModal(response,'delete')
             }else if(e.target.innerText === 'Não'){
                 modalDelete.classList.remove('active__delete')

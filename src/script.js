@@ -55,15 +55,15 @@ Dom.cartMobile()
 
 if(await Dom.arrayLocal.length !== 0){
     if(localStorage.getItem('token') !== null){
-        Dom.arrayCart = await Dom.arrayLocal
-        Dom.valueCart(Dom.arrayCart[0]);
-        Dom.createCart(Dom.arrayCart[0]);
-        Dom.lengthCart(Dom.arrayCart[0]);
+        // Dom.arrayCart = await Dom.arrayLocal
+        // Dom.valueCart(Dom.arrayCart[0]);
+        // Dom.createCart(Dom.arrayCart[0]);
+        // Dom.lengthCart(Dom.arrayCart[0]);
     }else{
         Dom.arrayCart = await Dom.arrayLocal
-        Dom.valueCart(Dom.arrayCart[0]);
-        Dom.createCart(Dom.arrayCart[0]);
-        Dom.lengthCart(Dom.arrayCart[0]); 
+        Dom.valueCart(Dom.arrayCart);
+        Dom.createCart(Dom.arrayCart);
+        Dom.lengthCart(Dom.arrayCart); 
     }
 
     
@@ -71,10 +71,8 @@ if(await Dom.arrayLocal.length !== 0){
 
 // if(localStorage.getItem('token') !== null){
 //     await Cart.addProductsMyCart(Dom.arrayCart)
-//     console.log(await Cart.getMyCartProducts())
 // }
-Dom.arrayCart = await Dom.arrayLocal
-console.log(Dom.arrayCart[0])
+// Dom.arrayCart = await Dom.arrayLocal
 
 // let arrayTeste = await Dom.fixObject()
 // let arrayItens = []
@@ -89,19 +87,16 @@ console.log(Dom.arrayCart[0])
 //     arrayItens.push(objItem)
 // }
 
-// console.log(arrayItens)
+console.log(Dom.arrayCart)
 
 
 
-let arrayTotal = await ProductsPrivate.getMyProducts()
 
-if(localStorage.getItem('token') === null){
-    arrayTotal = await ProductsPublic.getProducts()
-}
+let arrayTotal = await ProductsPublic.getProducts()
+
 
 let filterTag = document.querySelector('.nav__ul')
 filterTag.addEventListener('click', async (e)=>{
-  
     if(e.target.nodeName === 'LI' || e.target.nodeName !== 'IMG'){
         Dom.showcase(await Filters.categoryFilter(arrayTotal, e.target.innerText))
     }

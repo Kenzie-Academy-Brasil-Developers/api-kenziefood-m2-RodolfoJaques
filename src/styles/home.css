@@ -782,8 +782,6 @@ header > div:nth-child(2) > button:hover .modalUser{
         left: 6vw;
         right: 6vw;
         top: 15vw;
-
-        overflow: hidden;
     
     }
     .value__cart {
