@@ -1,4 +1,5 @@
 import { User } from "./controllers/User.js";
+import { Dom } from "./models/Dom.js";
 
 async function register(e){
 
@@ -18,7 +19,7 @@ async function register(e){
 
     if(typeof dataFinal === 'string' || dataFinal.status === "Error"){
 
-        alert(`CADASTRO INVALIDO...\nTente novamente!`)
+        modalErrorRegisterPage()
         
     }else{
 
@@ -27,3 +28,16 @@ async function register(e){
 }
 const button = document.getElementById('cadastro__submit')
 button.addEventListener('click',register)
+
+
+function modalErrorRegisterPage(){
+
+    Dom.modalRegisterError()
+
+    const exitModal = document.querySelector(".error__button button")
+    exitModal.addEventListener("click",() => {
+
+        window.location.href = "./cadastro.html"
+    })
+}
+
