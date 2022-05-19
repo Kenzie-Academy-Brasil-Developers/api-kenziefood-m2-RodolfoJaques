@@ -1,3 +1,4 @@
+import { Cart } from "../controllers/Cart.js";
 import { ProductsPublic } from "../controllers/ProductsPublic.js";
 
 class Dom{
@@ -6,6 +7,7 @@ class Dom{
     static count = 0
     static objectAll = []
     static arrayLocal = this.fixObject()
+    static arrayServer = []
 
 
 
@@ -228,9 +230,21 @@ class Dom{
     }
 
 
-    static addItemCart() {
+    static async addItemCart() {
+        let arrayServerReceive = await Cart.getMyCartProducts()
+        if(arrayServerReceive.length !== 0){
+            arrayServerReceive.forEach(element => {
+                for(let i = 0; i < element.quantity;i++){
+                    Dom.arrayCart.push(element.products)
+                }
+            });
+            Dom.valueCart(Dom.arrayCart);
+            Dom.createCart(Dom.arrayCart);
+            Dom.lengthCart(Dom.arrayCart);    
+        }
+        
         const ulShowcase = document.querySelector('#showcase');
-        ulShowcase.addEventListener('click', (event) => {
+        ulShowcase.addEventListener('click', async (event) => {
             if (event.target.id === 'btn__buy' || event.target.classList[0] === 'buyBnt__img') {
                 let card = {
                     imagem: event.target.closest('li').children[0].src,
@@ -254,6 +268,12 @@ class Dom{
                     localStorage.clear()
                     localStorage.setItem(`${Object.keys(this.objectAll)}`,Object.values(this.objectAll))
                 }else{
+                    
+                    this.objectAll = this.addCartObject(Dom.arrayCart)
+                    this.arrayServer= this.fixObjectApi(this.objectAll)
+                    this.arrayServer.forEach(async element => {
+                        await Cart.addProductsMyCart(element)
+                    });
                     // this.objectAll = this.addCartObject(Dom.arrayCart)
                     // sessionStorage.clear()
                     // sessionStorage.setItem(`${Object.keys(this.objectAll)}`,Object.values(this.objectAll))
@@ -449,11 +469,27 @@ class Dom{
     }
 
 
+    static fixObjectApi(object){
+        let keys = Object.keys(object)
+        let values = Object.values(object)       
+        let objApi = {}
+        let newArrayApi = []
+
+        keys.forEach((element,i) => {
+            objApi = {}
+            objApi.product_id = element
+            objApi.quantity = values[i]
+            newArrayApi.push(objApi)
+        });
+        return newArrayApi
+    }
+
+
     static deletCart() {
         const trashBtn = document.querySelector('.cart__card');        
        
         
-        trashBtn.addEventListener('click', (event) => {
+        trashBtn.addEventListener('click', async (event) => {
             event.preventDefault();
 
 
@@ -480,13 +516,8 @@ class Dom{
                     
 
                 } else{
-                    // if(Dom.arrayCart.length === 1){
-                    //     sessionStorage.clear()
-                    // }else{
-                    //     this.objectAll = this.addCartObject(Dom.arrayCart)
-                    //     sessionStorage.clear()
-                    //     sessionStorage.setItem(`${Object.keys(this.objectAll)}`,Object.values(this.objectAll))   
-                    // }
+                    await Cart.deleteMyProductFromCart(event.target.parentNode.id)
+                    window.location.reload()
                 }   
                 
             }      
