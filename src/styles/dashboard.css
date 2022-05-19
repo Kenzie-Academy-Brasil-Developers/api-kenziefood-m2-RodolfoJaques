@@ -264,7 +264,7 @@ header > div:nth-child(2) > button:hover .modalUser{
     display: flex;
     margin: 13px 0px 13px 0px;
 
-    padding-left: 5px;
+    padding-left: 0px;
     font-family: 'Poppins', sans-serif;
     overflow-y: auto;
 }
@@ -289,6 +289,8 @@ header > div:nth-child(2) > button:hover .modalUser{
 .button__nav:hover{
 
     cursor: pointer;
+    background-color: var(--Color-primary);
+    color: var(--Grey-1);
 }
 
 .button__nav--todos{
@@ -331,8 +333,6 @@ header > div:nth-child(2) > button:hover .modalUser{
     
 }
 
-/*_______list style_______*/
-
 .prod__action{
     color: var(--Grey-3);
 
@@ -343,12 +343,24 @@ header > div:nth-child(2) > button:hover .modalUser{
     display: flex;
     justify-content: space-between;
 
-    margin-left: 70px;
+    margin-left: 30px;
     margin-top: 30px;
 
     padding-right: 28px;
     padding-left: 78px;
 }
+
+
+.description{
+    display: none;
+}
+.category{
+    display: none;
+}
+
+/*_______list style_______*/
+
+
 
 .list{
 
@@ -756,7 +768,6 @@ header > div:nth-child(2) > button:hover .modalUser{
         position: absolute;
         bottom: 1vh;
         right: 1vw;
-
         
         width: 496px;
         height: 135px;
@@ -876,6 +887,8 @@ header > div:nth-child(2) > button:hover .modalUser{
     .button__nav:hover{
 
         cursor: pointer;
+        background-color: var(--Color-primary);
+        color: var(--Grey-1);
     }
 
     .button__nav--todos{
@@ -921,8 +934,33 @@ header > div:nth-child(2) > button:hover .modalUser{
     /*__________list style___________*/
 
     .prod__action{
+        color: var(--Grey-3);
+    
+        font-family: 'Inter';
+        font-style: normal;
+        font-size: smaller;
+    
+        display: flex;
+        justify-content: space-around;
+        
+    
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-top: 30px;
+    
+        padding-right: 68px;
+        padding-left: 98px;
+    }
 
-        margin: 40px 10% 0px 10%;
+    .prod__action p{
+        display: flex;       
+        
+    }
+
+    .margem{
+
+        margin-right: 230px;
+        margin-left: 230px;
     }
 
     .list{

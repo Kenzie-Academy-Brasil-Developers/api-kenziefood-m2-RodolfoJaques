@@ -2,6 +2,8 @@ import { Dom } from "./models/Dom.js";
 import { User } from "./controllers/User.js";
 import { Filters } from "./models/Filters.js";
 import { ProductsPublic } from "./controllers/ProductsPublic.js";
+import { Cart } from "./controllers/Cart.js";
+import { ProductsPrivate } from "./controllers/ProductsPrivate.js";
 
 
 let noLogin = {
@@ -50,6 +52,70 @@ Dom.addItemCart()
 // Dom.lenghtCart()
 // Dom.valueCart()
 Dom.cartMobile()
+
+if(await Dom.arrayLocal.length !== 0){
+    if(localStorage.getItem('token') !== null){
+        Dom.arrayCart = await Dom.arrayLocal
+        Dom.valueCart(Dom.arrayCart[0]);
+        Dom.createCart(Dom.arrayCart[0]);
+        Dom.lengthCart(Dom.arrayCart[0]);
+    }else{
+        Dom.arrayCart = await Dom.arrayLocal
+        Dom.valueCart(Dom.arrayCart[0]);
+        Dom.createCart(Dom.arrayCart[0]);
+        Dom.lengthCart(Dom.arrayCart[0]); 
+    }
+
+    
+}  
+
+// if(localStorage.getItem('token') !== null){
+//     await Cart.addProductsMyCart(Dom.arrayCart)
+//     console.log(await Cart.getMyCartProducts())
+// }
+Dom.arrayCart = await Dom.arrayLocal
+console.log(Dom.arrayCart[0])
+
+// let arrayTeste = await Dom.fixObject()
+// let arrayItens = []
+// let objItem = {}
+// let arrayKey = arrayTeste[0]
+// let arrayValue = arrayTeste[1]
+// console.log(arrayKey.length)
+// for(let i = 0; i < arrayKey.length; i++){
+//     objItem = {}
+//     objItem.product_id = arrayKey[i]
+//     objItem.quantity = arrayValue[i]
+//     arrayItens.push(objItem)
+// }
+
+// console.log(arrayItens)
+
+
+
+let arrayTotal = await ProductsPrivate.getMyProducts()
+
+if(localStorage.getItem('token') === null){
+    arrayTotal = await ProductsPublic.getProducts()
+}
+
+let filterTag = document.querySelector('.nav__ul')
+filterTag.addEventListener('click', async (e)=>{
+  
+    if(e.target.nodeName === 'LI' || e.target.nodeName !== 'IMG'){
+        Dom.showcase(await Filters.categoryFilter(arrayTotal, e.target.innerText))
+    }
+})
+
+let filterText = document.querySelector('header')
+filterText.addEventListener('keydown', async (e)=>{
+    if(e.target.nodeName === 'INPUT'){
+        Dom.showcase(Filters.filterBySearch(arrayTotal, e.target.value))
+    }
+})
+
+
+
 
 
 

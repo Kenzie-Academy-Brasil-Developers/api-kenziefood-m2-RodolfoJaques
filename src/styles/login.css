@@ -1,7 +1,7 @@
 :root {
     --Color-primary: #FF2253;
     --Grey-2: #E9ECEF;
-    
+    --Grey-4: #212529;
 }
 
 body {
@@ -15,8 +15,8 @@ body {
 
     display: flex;
     flex-direction: column;
-    width: 335px;
-    height: 375px;
+    width: 300px;
+    height: 410px;
     /* border: 1px solid black; */
     border-radius: 15px 15px;
     background: rgb(7,18,27);
@@ -37,10 +37,6 @@ body {
     
 }
 
-.box__register > img {
-    width: 45px;
-}
-
 .box__label--label {
     display: flex;
     flex-direction: column;
@@ -56,7 +52,7 @@ body {
     gap: 15px;
     font-family: 'Poppins';
     font-weight: 400;
-    margin-top: 10px;
+    margin-top: 35px;
     
 }
 
@@ -69,12 +65,18 @@ body {
 }
 
 .box__register input {
-    width: 250px;
-    height: 35px;
-    border-radius: 12px;
+    width: 220px;
+    height: 50px;
+    border-radius: 15px;
     font-family: 'Poppins';
     font-weight: 400;
     padding: 26px, 2px, 26px, 20px
+}
+
+.box__register input:focus{
+
+    outline: 0;
+    border: solid var(--Grey-4);
 }
 
 .box__span {
@@ -93,13 +95,14 @@ body {
 }
 
 button{
-    width: 170px;
-    height: 35px;
-    border-radius: 12px;
+    width: 150px;
+    height: 50px;
+    border-radius: 15px;
     cursor: pointer;
     margin-top: 10px;
     font-weight: 500;
     color: var(--Color-primary);
+    background: var(--Grey-2);
     border: none;
 }
 
@@ -111,4 +114,30 @@ button:active {
 
 ::placeholder {
     padding: 5px;
+}
+
+.box__popup {
+    display: none;
+    background: var(--Grey-2);
+    font-family: 'Poppins';
+    font-style: normal;
+    width: 300px;
+    height: 40px;
+    font-weight: 500;
+    font-size: 16px;
+    text-align: center;
+    border-radius: 10px;
+    margin-top: -430px;
+}
+
+.box__alert {
+    margin-top: 12px;
+}
+
+.box__close  {
+    cursor: pointer;
+    font-size: 20px;
+    width: 25px;
+    margin-top: -27px;
+    margin-left: 275px;
 }

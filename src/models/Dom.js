@@ -1,10 +1,20 @@
+import { ProductsPublic } from "../controllers/ProductsPublic.js";
+
 class Dom{
     static arrayCart = [];
     static deletArrayCart = [];
+    static count = 0
+    static objectAll = []
+    static arrayLocal = this.fixObject()
+
+
+
+
+
 
     static async showcase(arrayObj) {
         const ulShowcase = document.querySelector('.showcase__home');
-
+        ulShowcase.innerHTML = ''
         let items = await arrayObj;
         items.forEach(item => {
             let pollutedItem = this.pollutedItem(item);
@@ -61,6 +71,7 @@ class Dom{
     }
     
     static modalStatus = document.querySelector(".active__status")
+    static modalError = document.querySelector(".main")
 
     static createHeader(){
         let header = document.querySelector('header')
@@ -222,18 +233,31 @@ class Dom{
         ulShowcase.addEventListener('click', (event) => {
             if (event.target.id === 'btn__buy' || event.target.classList[0] === 'buyBnt__img') {
                 let card = {
-                    image: event.target.closest('li').children[0].src,
+                    imagem: event.target.closest('li').children[0].src,
                     categoria: event.target.closest('li').children[3].innerHTML,
                     id: event.target.closest('li').id,
                     nome: event.target.closest('li').children[1].innerHTML,
                     preco: event.target.closest('li').children[4].children[0].innerHTML,
+                    num: this.count
                 }
-
-                Dom.arrayCart.push(card);
                 
+                Dom.arrayCart.push(card);
                 Dom.valueCart(Dom.arrayCart);
                 Dom.createCart(Dom.arrayCart);
                 Dom.lengthCart(Dom.arrayCart);
+                
+                this.count++
+
+                if(localStorage.getItem('token') === null){
+                    
+                    this.objectAll = this.addCartObject(Dom.arrayCart)
+                    sessionStorage.clear()
+                    sessionStorage.setItem(`${Object.keys(this.objectAll)}`,Object.values(this.objectAll))
+                }else{
+                    this.objectAll = this.addCartObject(Dom.arrayCart)
+                    sessionStorage.clear()
+                    sessionStorage.setItem(`${Object.keys(this.objectAll)}`,Object.values(this.objectAll))
+                }
             }
         })
 
@@ -246,9 +270,16 @@ class Dom{
         let array = [];
 
         arrayCart.forEach((item) => {
-           let sliceItem = item.preco.slice((3));
-           let numberItem = Number(sliceItem);
-           array.push(numberItem);
+            if(typeof item.preco === 'string'){
+                let sliceItem = item.preco.slice((3));
+                let numberItem = Number(sliceItem);
+                array.push(numberItem);
+            }else{
+                array.push(item.preco);
+            }
+        //    let sliceItem = item.preco.slice((3));
+        //    let numberItem = Number(sliceItem);
+           
        })
 
        let totalValue = array.reduce((acc, current) => acc + current, 0);
@@ -258,32 +289,32 @@ class Dom{
     static createCart(arrayCart) {
         const ulCartContent = document.querySelector('.cart__card');
         ulCartContent.innerHTML = '';
-
-        arrayCart.forEach( ({image, id, nome, preco, categoria}) => {
+        
+        arrayCart.forEach( ({imagem, id, nome, preco, categoria , num}) => {
+            
             const li = document.createElement('li');
             li.classList.add('cart__products');
             li.id = id;
 
             li.innerHTML =`
-            <img class='products__img' src="${image}" alt="${nome}">
-            <h3 class='products__title'>${nome}</h3>
-            <span class='products__category'>${categoria}</span>
-            <p class='products__price'>${preco}</p>
-            <button id="${id}" class='span__products__icon'>
-                <img class='products__icon' src="./src/assets/trash_aside.svg">
+            <img class="products__img" src="${imagem}" alt="${nome}">
+            <h3 class="products__title">${nome}</h3>
+            <span class="products__category">${categoria}</span>
+            <p class="products__price">${preco}</p>
+            <button id="${id}" class="span__products__icon">
+                <img class="products__icon" id = "${num}" src="./src/assets/trash_aside.svg">
             </button>
             `
             ulCartContent.append(li);
-
         })  
-        
-        console.log(Dom.arrayCart)
+
     }
 
     static lengthCart(arrayCart) {
         const valueTotal = document.querySelector('#length__value')
         let cartLength = arrayCart.map(item => item).length;
         valueTotal.innerHTML = cartLength;
+        return cartLength
     }
 
     static cartMobile() {
@@ -342,20 +373,145 @@ class Dom{
         })
     }
 
-    static deletCart(arrayCart) {
+
+    static addCartObject(array){
+            let obj = {}
+        
+            array.forEach(element => {
+                
+                obj[`${element.id}`] = 0
+        
+            });
+        
+            array.forEach(element => {
+                
+                obj[`${element.id}`] = obj[`${element.id}`] + 1
+        
+            });
+        
+            return obj  
+    }
+
+
+    static async fixObject(){
+        let newArrayApi = []
+        let obj = {}
+        let objApi = {}
+        let arrayResponse = []
+        // let token = localStorage.getItem('token')
+        // if(token !== null){
+        //     Object.entries(localStorage)
+        // }
+        let key 
+        let value
+        if(Object.entries(sessionStorage).length > 1){
+            key = Object.entries(sessionStorage)[1][0].split(',')
+            value = Object.entries(sessionStorage)[1][1].split(',')        
+            
+            key.forEach((element,i) => {
+                objApi = {}
+                obj[`${element}`] = value[i]
+                objApi.product_id = element
+                objApi.quantity = value[i]
+                newArrayApi.push(objApi)
+            });
+        }
+        
+
+        let array = await ProductsPublic.getProducts()
+        let newArray = []
+
+        Object.keys(obj).forEach((element,index) => {
+            
+            // let { categoria, descricao, id,imagem,nome,preco } = objetoTeste
+            for(let i = 0 ; i < Number(Object.values(obj)[index]); i++){   
+                let objeto= array.filter(elem => element === elem.id)[0]
+                let { categoria, descricao, id,imagem,nome,preco } = objeto
+                newArray.push({ categoria, descricao, id,imagem,nome,preco })
+            }
+
+        });
+
+        for(let i = 0 ; i < newArray.length; i++){
+            newArray[i].num = i
+        }
+
+        if(localStorage.getItem('token')!== null){
+            for(let i = 0 ; i < newArrayApi.length; i++){
+                newArrayApi[i].num = i
+            }
+
+        }
+        arrayResponse.push(newArray)
+        arrayResponse.push(newArrayApi)
+        return arrayResponse
+    }
+
+
+    static deletCart() {
         const trashBtn = document.querySelector('.cart__card');        
        
-        // console.log()
+        
         trashBtn.addEventListener('click', (event) => {
             event.preventDefault();
 
-            Dom.deletArrayCart = arrayCart.filter((element) => element.id !== event.target.parentNode.id)
-            console.log(Dom.deletArrayCart)
-            Dom.arrayCart = Dom.deletArrayCart
-            Dom.createCart()
+
+            if(event.target.nodeName === 'IMG'){
+                // console.log(event.target.parentNode.parentNode)
+                // event.target.parentNode.parentNode.remove()
+                // let arrayDelete =  Dom.arrayCart.c event.target.parentNode.id
+                
+                Dom.deletArrayCart = Dom.arrayCart.filter((e) => e.num !== Number(event.target.id))
+                Dom.arrayCart = Dom.deletArrayCart
+                Dom.valueCart(Dom.arrayCart);
+                Dom.createCart(Dom.arrayCart);
+                Dom.lengthCart(Dom.arrayCart);
+                
+                if(localStorage.getItem('token') === null){
+                    
+                    if(Dom.arrayCart.length === 0){
+                        sessionStorage.clear()
+                    }else{
+                        this.objectAll = this.addCartObject(Dom.arrayCart)
+                        sessionStorage.clear()
+                        sessionStorage.setItem(`${Object.keys(this.objectAll)}`,Object.values(this.objectAll))   
+                    }
+                    
+
+                } else{
+                    if(Dom.arrayCart.length === 1){
+                        sessionStorage.clear()
+                    }else{
+                        this.objectAll = this.addCartObject(Dom.arrayCart)
+                        sessionStorage.clear()
+                        sessionStorage.setItem(`${Object.keys(this.objectAll)}`,Object.values(this.objectAll))   
+                    }
+                }   
+                
+            }      
+
+
         })
         
     }
+
+    static modalRegisterError(){
+
+        const containerModalError = document.createElement('div')
+        containerModalError.innerHTML = `
+        
+        <div class="modal__error">
+            <div class="error__button">
+                <p class="error">Error</p>
+                <button>x</button>
+            </div>
+            <p class="modal__Error--message">CADASTRO INVALIDO... Tente novamente!</p>
+            <div class="status__error--red"></div>
+        </div>
+        `
+        Dom.modalError.appendChild(containerModalError)
+    }
 }
+
 
 export{Dom}
