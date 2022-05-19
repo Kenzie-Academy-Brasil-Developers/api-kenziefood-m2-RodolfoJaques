@@ -307,6 +307,8 @@ class Dom{
             if (closeX) {
                 mask.style.display = 'none';
             }
+        })
+    }
 
     static listProductsDash(array){
 
