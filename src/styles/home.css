@@ -52,7 +52,10 @@
         height: 48px;
 
         font-size: 16px;
+    }
 
+    .nav__todos:hover {
+        cursor: pointer;
     }
     
     .nav__panificadora {
@@ -60,29 +63,31 @@
         justify-content: center;
         align-items: center;
 
-        background-color: var(--Grey-1);
+        background-color: var(--Product-2);
         border-radius: 32px;
        
         width: 170px;
         height: 48px;
 
         font-size: 16px;
-
     }
 
     .nav__panificadora > span > img {
         padding: 10px;
     }
+
     .nav__panificadora:hover {
         background-color: var(--Color-primary);
         color: var(--Color-text-wh);
+
+        cursor: pointer;
     }
 
     .nav__frutas {
         display: flex;
         align-items: center;
 
-        background-color: var(--Grey-1);
+        background-color: var(--Product-3);
 
         border-radius: 32px;
 
@@ -99,13 +104,15 @@
     .nav__frutas:hover {
         background-color: var(--Color-primary);
         color: var(--Color-text-wh);
+
+        cursor: pointer;
     }
 
     .nav__bebidas {
         display: flex;
         align-items: center;
 
-        background-color: var(--Grey-1);
+        background-color: var(--Product-4);
 
       
         border-radius: 32px;
@@ -124,6 +131,8 @@
     .nav__bebidas:hover {
         background-color: var(--Color-primary);
         color: var(--Color-text-wh);
+
+        cursor: pointer;
     }
 
     .showcase__home {
@@ -161,14 +170,6 @@
         border: 3px solid var(--Color-primary);
     }
     
-    .showcase__card:first-child > img { 
-        border: none;
-        margin-bottom: 7px;
-    }
-    .showcase__card:first-child > img:hover { 
-        border: 3px solid var(--Color-primary);
-
-    }
 
     .showcase__card:first-child > .card__title {
         font-style: normal;
@@ -237,6 +238,7 @@
     .card__buyBtn:hover {
         background-color: var(--Color-Secondary);
 
+        cursor: pointer;
     }
 
     .buyBnt__img:hover {
@@ -468,11 +470,6 @@
     }
 }
 
-@media screen and (min-width: 1000px){
-
-}
-
-
 body{
     width: auto;
     height: 100vh;
@@ -626,14 +623,17 @@ header > div:nth-child(2) > button:hover .modalUser{
     /* _____________HEADER______________ */
 
     header{
-        padding: 11px 118px 0 117px;
         justify-content: space-between;
         align-items: center;
+
+        padding: 3vw 0vw;
+        margin-left: 3.3vw;
+
         overflow-x: unset;
         overflow-y: unset;
     }
     header > div {
-        margin-right: -168px;
+        margin-right: 1vw;
     }
     header > div > p:nth-child(2){
         margin: 0 0;
@@ -687,8 +687,9 @@ header > div:nth-child(2) > button:hover .modalUser{
     }
 
     header > div:nth-child(2) > button:hover > .modalUser{
-        right: -130px;
-        top: 78px;
+        right: 48px;
+        top: 54px;
+
         width: 206px;
         height: 127px;
         transition-delay: 0s;
@@ -721,39 +722,49 @@ header > div:nth-child(2) > button:hover .modalUser{
     header {
         display: flex;
         justify-content: space-between;
-        padding: 34px 21px;
-        margin-left: 0px;
+        margin-right: -24px;
+        margin-left: unset;
+        
+        padding: 14px 40px;
+
+        overflow: hidden;
     }
    
     .position__style {
         display: flex;
         justify-content: flex-start;
 
-        margin-left: 22px;
+        margin-left: 5.3vw;
     }
     .nav {
         margin: 0px;
     }
     .nav__ul {
-        gap: 33px;
+        gap: 57px;
         margin: 0px 0 20px 0;
     }
     .position__showcase {
         display: flex;
         align-content: center;
-        justify-content: flex-start;
+        justify-content: center;
         align-items: center;
 
-        margin-right: 48px;
     }
 
     .showcase__home {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-        width: 700px;
+        justify-content: flex-start;
 
-        margin-left: 22px;
+        overflow-y: auto;
+
+        width: 664px;
+        height: 573px;
+
+        margin-left: 3.1vw;
+
+        gap: 2vw;
     }
     
     .card__desciption {
@@ -762,15 +773,17 @@ header > div:nth-child(2) > button:hover .modalUser{
 
     .mask {
         display: flex;
-        width: 697px;
-        height: 0px;
+        height: 100.7vw;
+        width: 100vw;
 
     }
     .conteiner {
         position: absolute;
-        left: 600px;
-        right: -134px;
-        top: 118px;
+        left: 6vw;
+        right: 6vw;
+        top: 15vw;
+
+        overflow: hidden;
     
     }
     .value__cart {
@@ -778,52 +791,87 @@ header > div:nth-child(2) > button:hover .modalUser{
     }   
     .cart__content {
         overflow: auto;
-        height: 160px;
+        height: 40vw;
     } 
+    .products__category {
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
 
+    footer {
+        display: flex;
+        overflow: hidden;
+    }
+
+    .button__moblie {
+        top: 93.5vw;
+        bottom: 1vw;
+        /* left: 20vw; */
+        right: 5vw;
+        width: 690px;
+        height: 55px;
+    }
     
 }
 
-@media (min-width:1200px) {
-    header {
+     header {
         display: flex;
-        justify-content: flex-start;
+        justify-content: space-between;
     }
 
     header > div {
-        margin-right: 269px;
-        margin-left: 660px;
+        margin-right: 0px;
+        margin-left: 10px;
     }
     
     .position__style {
         display: flex;
-        justify-content: center;
-        margin-left: -531px;
+        justify-content: flex-start;
+
+        margin-left: 45px;
     }
     
     .nav__ul {
-        gap: 34px;
+        gap: 15px;
     }
 
     .position__showcase {
         display: flex;
-        justify-content: center;
+        justify-content: start;
     }
 
     .showcase__home {
-        width: 45vw;
+        width: 70vw;
+        height: 681px;
+
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-content: flex-start;
+        justify-content: flex-start;
+        align-items: center;
+
         overflow-y: auto;
-        height: 559px;
+
+        gap: 2vw;
+    }
+
+    .showcase__card {
+        width: 222px;
+        
     }
     
     .card__desciption {
-        width: 300px;
+        width: 200px;
+        line-height: 20px;
+        padding: 0px 4px;
     }
 
     .conteiner {
-        left: -76px;
-        right: 344px;
-        top: 118px;
+        left: 0px;
+        top: 80px;
+        right: 16px;
     }
 
     .value__cart {
@@ -831,15 +879,23 @@ header > div:nth-child(2) > button:hover .modalUser{
     } 
 
     .cart__content {
-        height: 430px
+        height: 24vw;
     } 
 
     .cart__card {
         display: flex;
         flex-direction: column;
-        gap: 0px;
+
+        gap: 8px;
     }
     
+    .cart__products {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        flex-direction: row;
+    }
     .products__category {
         bottom: -35px;
         left: -235px;
@@ -849,14 +905,37 @@ header > div:nth-child(2) > button:hover .modalUser{
     .span__products__icon {
         display: flex;
     }
+
+    .products__img {
+        width: 100px;
+        height: 100px;
+    }
     
     .products__title {
-        width: 272.75px;
-        padding-left: 35px;
+        width: 0px;
+       
+        padding-left: 15px;
     }
     header > div:nth-child(2) > button:hover > .modalUser {
-        top: 73px;
-        right: 360px;
+        top: 54px;
+        right: 40px;
     }
-}
+    footer {
+        display: none;
+    }
+
+    .mask {
+        background-color: rgba(0, 0, 0, 0);
+        height: 50vw;
+        width: 25vw;
+    }
+
+    header > div:nth-child(2) > input {
+        width: 240px;
+        padding: 0 0 0 33px;
+        
+    }
+    header > div:nth-child(2) > span {
+        right: 300px;
+    }
 
