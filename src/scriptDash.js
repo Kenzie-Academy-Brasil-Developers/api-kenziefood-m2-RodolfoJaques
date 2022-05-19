@@ -37,27 +37,51 @@ document.body.addEventListener('click', () => {
     modalSelectModal({status:"rror"})
 })* */
 
-function modalSelectModal(param){
+function modalSelectModal(param,text){
 
-    if(param.status === "error" || param.message === "Token Invalido" || param.status >= 400 || param.status <= 500 || param === undefined){
+    if(text === 'delete'){
+        if(param.status === "error" || param.message === "Token Invalido" || param.status >= 400 || param.status <= 500 || param.error === "Formato de imagem invalido, deve ser uma url", param.status !== 204){
 
-        Dom.modalStatusError()
+            Dom.modalStatusError()
 
-        const exitModal = document.querySelector(".status__button button")
-        exitModal.addEventListener("click",() => {
+            const exitModal = document.querySelector(".status__button button")
+            exitModal.addEventListener("click",() => {
 
-            window.location.href = "./dashboard.html"
-        })
+                window.location.href = "./dashboard.html"
+            })
+        }else{
+
+            Dom.modalStatusAssert()
+
+            const exitModal = document.querySelector(".status__button button")
+            exitModal.addEventListener("click",() => {
+
+                window.location.href = "./dashboard.html"
+            })
+        }
     }else{
+        if(param.status === "error" || param.message === "Token Invalido" || param.status >= 400 || param.status <= 500 || param.error === "Formato de imagem invalido, deve ser uma url"){
 
-        Dom.modalStatusAssert()
+            Dom.modalStatusError()
 
-        const exitModal = document.querySelector(".status__button button")
-        exitModal.addEventListener("click",() => {
+            const exitModal = document.querySelector(".status__button button")
+            exitModal.addEventListener("click",() => {
 
-            window.location.href = "./dashboard.html"
-        })
+                window.location.href = "./dashboard.html"
+            })
+        }else{
+
+            Dom.modalStatusAssert()
+
+            const exitModal = document.querySelector(".status__button button")
+            exitModal.addEventListener("click",() => {
+
+                window.location.href = "./dashboard.html"
+            })
+        }
     }
+
+
 }
 
 function clickCategory(classHTML){
@@ -128,7 +152,8 @@ function deleteProdutoEdit (id){
                     let response = await ProductsPrivate.deleteMyProducts(id)
                     modalDelete.classList.remove('active__delete')
                     modalDelete.innerHTML = ''
-                    modalSelectModal(response)
+                    console.log(response.status)
+                    modalSelectModal(response,'delete')
                 }else if(e.target.innerText === 'Não'){
                     modalDelete.classList.remove('active__delete')
                     modalDelete.innerHTML = ''
@@ -201,6 +226,7 @@ function registerProduct(){
             let response = await ProductsPrivate.createMyProducts(obj)
             register.classList.remove('active__register')
             register.innerHTML = ''
+            console.log(response)
             modalSelectModal(response)
         }
     })
@@ -233,7 +259,7 @@ addProductBtn.addEventListener('click', async (e)=>{
 let editProductBtn = document.querySelector('.list')
 editProductBtn.addEventListener('click', async (e)=>{
     if(e.target.classList[1] === 'img_dash--edit'){
-        
+        window.scrollTo(0,0)
         editProduct(Filters.filterById(arrayTotal, e.target.parentNode.parentNode.id)[0],e.target.parentNode.parentNode.id)
     }
 })
@@ -241,6 +267,7 @@ editProductBtn.addEventListener('click', async (e)=>{
 let deleteProductBtn = document.querySelector('.list')
 deleteProductBtn.addEventListener('click', async (e)=>{
     if(e.target.classList[1] === 'img_dash--delete'){
+        window.scrollTo(0,0)
         const idProduct = e.target.parentNode.parentNode.id
         Dom.modalDeleteProduct()
         let modalDelete = document.getElementById('modal__delete')
@@ -249,7 +276,8 @@ deleteProductBtn.addEventListener('click', async (e)=>{
                 let response = await ProductsPrivate.deleteMyProducts(idProduct)
                 modalDelete.classList.remove('active__delete')
                 modalDelete.innerHTML = ''
-                modalSelectModal(response)
+                console.log('response')
+                modalSelectModal(response,'delete')
             }else if(e.target.innerText === 'Não'){
                 modalDelete.classList.remove('active__delete')
                 modalDelete.innerHTML = ''
