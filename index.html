@@ -12,28 +12,68 @@
     <title>Kenzie Food</title>
 </head>
 <body>
-    <header></header>
+    <header>
+
+    </header>
     <main>
-
-        <section>
-            <nav></nav>
+        <section class='position__style'>
+            <nav class="nav">
+                <ul class="nav__ul">
+                    <li class="nav__todos">Todos</li>
+                    <li class="nav__panificadora"><span><img src="./src/assets/Panificadora-icon.svg" alt="Icone de um pão para ilustrar o filtro chamado Panificadora"></span>Panificadora</li>
+                    <li class="nav__frutas"><span><img src="./src/assets/Frutas-icon.svg" alt="Icone de duas frutas para ilustrar o filtro chamado Frutas"></span>Frutas</li>
+                    <li class="nav__bebidas"><span><img src="./src/assets/Bebidas-icon.svg" alt="Icone de uma taça de vinho para ilustrar o filtro chamado Bebidas "></span>Bebidas</li>
+                </ul>
+            </nav>
         </section>
+        <section class="position__showcase">
 
-        <section class="showcase">
-
+            <ul class="showcase__home" id="showcase"></ul>
         </section>
-
-        <aside class="container">
-
+        
+        <aside>
+            <div class="mask">
+                <div class="conteiner">
+    
+                    <div class="conteiner__cart">
+                        <div class="cart__title">
+                            <img src="./src/assets/carrinho_aside.svg">
+                            <span> CARRINHO </span>
+                            <span class="cart__closeX">X</span>
+                        </div>
+                    </div>
+        
+                        <div class="cart__content">
+                            <ul class="cart__card"></ul>
+                        </div>
+        
+                        <div class="cart__value">
+                            <div class="value__cart">
+                                <span>Quantidade</span>
+                                <span id='length__value'>0</span>
+                            </div>
+        
+                            <div class="total__cart">
+                                <span>total</span>
+                                <span id='valueTotal'>R$ 0.00</span>
+                            </div>
+                        </div>
+                    </div>
+            </div>
         </aside>
-    </main>
 
-    <script src="src/controllers/Cart.js"></script>
-    <script src="src/controllers/ProductsPrivate.js"></script>
-    <script src="src/controllers/ProductsPublic.js"></script>
-    <script src="src/controllers/User.js"></script>
-    <script src="src/models/Dom.js"></script>
-    <script src="src/models/Filters.js"></script>
-    <script src="src/script.js"></script>
+        
+    </main>
+    
+    <footer>
+        <div class="button__moblie">
+            <div class="moblie__title">
+                <img src="./src/assets/carrinho_aside.svg">
+                <span> CARRINHO </span>
+            </div>
+        </div>
+    </footer>
+
+    <script type="module" src="src/script.js"></script>
 </body>
 </html>
