@@ -24,7 +24,12 @@ button.addEventListener('click', async () => {
     let infoUser = await User.userLogin(infos)
 
     if(typeof infoUser !== 'string') {
-        alert('Usuário e senha inválido')
+        const popup = document.querySelector('.box__popup')
+        const popupClose = document.querySelector('.box__close')
+        popup.style.display = 'block'
+        popupClose.addEventListener('click', () => {
+            popup.style.display = 'none'
+        })
     } else {
         window.location.href = '../../index.html'
     }
