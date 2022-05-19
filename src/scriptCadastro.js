@@ -10,7 +10,7 @@ async function register(e){
     e.preventDefault()
 
     let data = {
-        neme:name,
+        name:name,
         email:email,
         password:password
     }

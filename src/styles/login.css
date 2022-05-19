@@ -1,7 +1,7 @@
 :root {
     --Color-primary: #FF2253;
     --Grey-2: #E9ECEF;
-    
+    --Grey-4: #212529;
 }
 
 body {
@@ -73,6 +73,12 @@ body {
     padding: 26px, 2px, 26px, 20px
 }
 
+.box__register input:focus{
+
+    outline: 0;
+    border: solid var(--Grey-4);
+}
+
 .box__span {
     display: flex;
     flex-direction: column;
@@ -96,6 +102,7 @@ button{
     margin-top: 10px;
     font-weight: 500;
     color: var(--Color-primary);
+    background: var(--Grey-2);
     border: none;
 }
 
