@@ -28,15 +28,6 @@ modal.addEventListener('click',(e)=>{
 })
 
 
-/**
-//logica do modal status
-
-{status:"error"}
-
-document.body.addEventListener('click', () => {
-    modalSelectModal({status:"rror"})
-})* */
-
 function modalSelectModal(param,text){
 
     if(text === 'delete'){
@@ -167,10 +158,6 @@ function deleteProdutoEdit (id){
 
 
 let arrayTotal = await ProductsPrivate.getMyProducts()
-
-if(arrayTotal.length === 0){
-    arrayTotal = await ProductsPublic.getProducts()
-}
 
 
 async function creatCardsDash() {
